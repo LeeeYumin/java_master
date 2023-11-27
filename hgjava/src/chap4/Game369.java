@@ -59,6 +59,7 @@ public class Game369 {
 		System.out.println("숫자 입력 : ");
 		int com = (int)(Math.random()*100)+1;
 		
+		//11.27깃허브 하고 아무거나 써봄!!
 		
  
 	} // end main
