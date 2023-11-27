@@ -59,14 +59,20 @@ public class StudentApp2 { //메소드는 클래스 안에 있어야 한다
 		System.out.print("조회할 이름 입력>> ");
 		String name = scn.nextLine();
 		boolean exists = false;
+		
 		for (int i = 0; i < students.length; i++) {
 			//조건추가 => 변경점수 입력.
-				
-		
+			if(name.equals(students[i].name)) {
+				System.out.print("변경점수 입력>>>");
+				students[i].score = scn.nextInt();
+				exists = true;
+			}
 			System.out.println();
 		}
 		//찾는 이름이 없음
-		
+		if (!exists) {
+			System.out.println("찾는 이름이 없습니다.");
+		}
 	} //end of modify()
 	public static void main(String[] args) {
 		boolean run = true;
