@@ -1,4 +1,4 @@
-package Todo.p20231128;
+package Todo.p20231127;
 
 public class Friend {
 
