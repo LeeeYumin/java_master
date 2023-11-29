@@ -16,9 +16,8 @@ public class BoardExe {
 		boards[0] = new Board(1, "첫번째글", "user01", "첫번째 글 입력중입니다", "23-11-12");
 		boards[1] = new Board(2, "두번째글", "user02", "두번째 글 입력중입니다", "23-11-15");
 		// boards[2] <--- 5번글 들어갈 위치
-		boards[3] = new Board(4, "네번째글", "user03", "네번째 글 입력중입니다", "23-11-17");
 		boards[2] = new Board(3, "세번째글", "user03", "세번째 글 입력중입니다", "23-11-17");
-
+		boards[3] = new Board(4, "네번째글", "user03", "네번째 글 입력중입니다", "23-11-17");
 		boards[4] = new Board(5, "다섯번째글", "user03", "세번째 글 입력중입니다", "23-11-17");
 		boards[5] = new Board(6, "여섯번째글", "user03", "세번째 글 입력중입니다", "23-11-18");
 		boards[6] = new Board(7, "일곱번째글", "user03", "세번째 글 입력중입니다", "23-11-19");
@@ -45,7 +44,6 @@ public class BoardExe {
 			for (int i = 0; i < boards.length - 1; i++) {
 				if (boards[i] != null && boards[i + 1] != null) {
 					if (boards[i].getBnum() > boards[i + 1].getBnum())
-						;
 					temp = boards[i];
 					boards[i] = boards[i + 1];
 					boards[i + 1] = temp;
