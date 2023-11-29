@@ -54,14 +54,13 @@ public class StudentExe {
 	}
 
 	// 삭제
-	boolean removeStudent(String name) { 
-		for(int i=0; i < students.length; i++) {
-			if(students[i] != null && students[i].getStuName().equals(name)) {
+	boolean removeStudent(String name) {
+		for (int i = 0; i < students.length; i++) {
+			if (students[i] != null && students[i].getStuName().equals(name)) {
 				students[i] = null;
-				return true; 
+				return true;
 			}
-		return false; 
-		}	
+		}
+		return false;
 	}
-	}
-}
+} //
