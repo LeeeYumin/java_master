@@ -11,27 +11,27 @@ public class BoardApp { // public은 패키지가 달라도 다 접근가능
 	// static BoardExe exe = new BoardExe(); //이건 한번 만들어놓고 계속 씀
 	// 데이터마다 다른 정보를 담을 필요가 없는 클래스는 static 멤버로 선언..
 
-	private Scanner scn = new Scanner(System.in); //필드임
+	private Scanner scn = new Scanner(System.in); // 필드임
 	private String id = null; // while문 밖으로 뺌->더 위로 올림. 이것도 필드
-	
-	//싱글톤 방식의 인스턴스 생성방식
+
+	// 싱글톤 방식의 인스턴스 생성방식
 	private static BoardApp instance = new BoardApp();
-	
-	//생성자
+
+	// 생성자
 	private BoardApp() {
-		
+
 	}
-	
-	public static BoardApp getInstance() { //static : 다른 클래스에서 사용할수있게
+
+	public static BoardApp getInstance() { // static : 다른 클래스에서 사용할수있게
 		return instance;
 	}
-	
-	private void boardAdd(){
+
+	private void boardAdd() {
 		System.out.println("제목 입력>>");
 		String title = scn.nextLine();
 		System.out.println("내용 입력>>");
 		String content = scn.nextLine();
-		System.out.println("번호 입력>>");
+		System.out.println("일시 입력>>");
 		String wdate = scn.nextLine();
 
 		Board board = new Board(BoardExe.getSequence(), title, content, wdate);
@@ -41,8 +41,8 @@ public class BoardApp { // public은 패키지가 달라도 다 접근가능
 		} else {
 			System.out.println("처리 실패");
 		}
-	} //end of boardAdd.
-	
+	} // end of boardAdd.
+
 	private void boardList() {
 		Board[] boardAry = BoardExe.boardList(); // 전체목록가지고오기
 		showList(boardAry, 1); // 전체 중 1페이지만보겠다
@@ -53,19 +53,40 @@ public class BoardApp { // public은 패키지가 달라도 다 접근가능
 			}
 			showList(boardAry, page);
 		}
-	} //end of boardList.
-	
+	} // end of boardList.
+
 	private void getBoard() {
 		System.out.println("글번호 입력>> ");
-		int bnum = Integer.parseInt(scn.nextLine());
+		int bnum = 0;
+		try {
+			bnum = Integer.parseInt(scn.nextLine()); // <<<에러발생지점
+		} catch (NumberFormatException e) {
+			System.out.println("12.01추가/번호를 확인하세요");
+		}
+		
+		
+//		private void getBoard() {
+//			int bnum = 0;
+//			while(true) {
+//				System.out.println("글번호 입력>>");
+//				try {
+//					bnum = Integer.parseInt(scn.nextLine()); 
+//					break;
+//				}catch (NumberFormatException e) {
+//			} System.out.println("글번호 잘못 선택");
+//		}
+//		} 
+//		이거는 반복문. 위에 private void getBoard() 는 내가 한거...
+		
+		
 		Board result = BoardExe.getBoard(bnum);
 		if (result != null) {
 			System.out.println(result.showDetailInfo());
 		} else {
 			System.out.println("조회 내용 없음");
 		}
-	} //end of getBoard.
-	
+	} // end of getBoard.
+
 	private void boardEdit() {
 		System.out.println("수정한 글번호>>> ");
 		int bnum = Integer.parseInt(scn.nextLine());
@@ -74,7 +95,7 @@ public class BoardApp { // public은 패키지가 달라도 다 접근가능
 		// 권한 체크
 		if (!BoardExe.checkResponsibility(id, bnum)) {
 			System.out.println("수정 권한없습니다..");
-			//continue;
+			// continue;
 			return;
 		}
 
@@ -83,15 +104,15 @@ public class BoardApp { // public은 패키지가 달라도 다 접근가능
 		} else {
 			System.out.println("처리 실패");
 		}
-	} //end of boardEdit.
-	
+	} // end of boardEdit.
+
 	private void boardDel() {
 		System.out.println("삭제할 글 번호>>>");
 		int bnum = Integer.parseInt(scn.nextLine());
 		// 권한 체크
 		if (!BoardExe.checkResponsibility(id, bnum)) {
 			System.out.println("삭제 권한없습니다..");
-			//continue;
+			// continue;
 			return;
 		}
 
@@ -100,8 +121,8 @@ public class BoardApp { // public은 패키지가 달라도 다 접근가능
 		} else {
 			System.out.println("삭제 실패");
 		}
-	} //end of boardDel.
-	
+	} // end of boardDel.
+
 	public void start() { // void는 리턴X.반환값유무.. ()안은 매개값
 		boolean run = true;
 
@@ -127,19 +148,26 @@ public class BoardApp { // public은 패키지가 달라도 다 접근가능
 
 		while (run) {
 			System.out.println("1.등록 2.목록 3.상세조회 4.수정 5.삭제 6.종료");
-			int menu = Integer.parseInt(scn.nextLine());
+
+			int menu = 0;
+			try {
+				menu = Integer.parseInt(scn.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("정확한 메뉴를 선택하세요");
+				continue;
+			}
 
 			switch (menu) {
-			case 1: //글등록
+			case 1: // 글등록
 				boardAdd();
-				
+
 				break;
 
 			case 2: // 목록보여줌 -> 페이지보기
 				boardList();
 				break;
 
-			case 3: //조회
+			case 3: // 조회
 				getBoard();
 				break;
 
@@ -161,7 +189,7 @@ public class BoardApp { // public은 패키지가 달라도 다 접근가능
 		System.out.println("end of prog");
 	} // end of main
 
-	private void showList(Board[] boardAry, int page) { //안에서만 쓸거라서 public -> private (클래스 안에서 접근허용)
+	private void showList(Board[] boardAry, int page) { // 안에서만 쓸거라서 public -> private (클래스 안에서 접근허용)
 		// 페이징처리
 		Board[] pageAry = BoardExe.pageList(boardAry, page); // boardAry:전체배열 의미
 		System.out.println("글번호 제목    작성자 작성일시");
