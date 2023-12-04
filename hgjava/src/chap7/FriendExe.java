@@ -4,7 +4,7 @@ public class FriendExe {
 	Friend[] storage = new Friend[10];
 	
 	//1:등록 2:목록 3:조회
-	//맞게 했는지 모르겠다,,,,,,,,
+	//3은.... 맞게 했는지 모르겠다,,,,,,,,
 	
 	public boolean addFriend(Friend friend) { //매개변수. 등록
 		for(int i = 0; i < storage.length; i++) {

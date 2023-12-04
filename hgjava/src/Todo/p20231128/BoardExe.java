@@ -23,8 +23,6 @@ public class BoardExe {
 		// boards[2] <--- 5번글 들어갈 위치
 		boards[2] = new Board(3, "세번째글", "user03", "세번째 글 입력중입니다", "23-11-17");
 		boards[3] = new Board(4, "네번째글", "user03", "네번째 글 입력중입니다", "23-11-17");
-		boards[2] = new Board(4, "네번째글", "user03", "네번째 글 입력중입니다", "23-11-17");
-		boards[3] = new Board(3, "세번째글", "user03", "세번째 글 입력중입니다", "23-11-17");
 		boards[4] = new Board(5, "다섯번째글", "user03", "세번째 글 입력중입니다", "23-11-17");
 		boards[5] = new Board(6, "여섯번째글", "user03", "세번째 글 입력중입니다", "23-11-18");
 		boards[6] = new Board(7, "일곱번째글", "user03", "세번째 글 입력중입니다", "23-11-19");
