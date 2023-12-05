@@ -98,7 +98,7 @@ public class StudentApp {
 				break;
 			case 5: // 삭제 해당되는 값 null로 바꿔주기
 //				exists = true;
-				System.out.println("삭제할 학생 번호 입력>> ");
+				System.out.println("삭제할 학생 이름 입력>> ");
 				stuName = scn.nextLine();
 				if (exe.removeStudent(stuName)) {
 					System.out.println("삭제완료");
