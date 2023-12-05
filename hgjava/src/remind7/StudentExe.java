@@ -1,161 +1,80 @@
 package remind7;
 
-import java.util.Scanner;
+//저장공간: 배열
 
-public class StudentApp {
+// 추가/수성/삭제/목록/단건조회
 
-	public static void main(String[] args) {
+public class StudentExe {
 
-		Scanner scn = new Scanner(System.in);
+	// 배열:
 
-		StudentExe exe = new StudentExe();
+	private Student[] students;
 
-		boolean run = true;
+	// 배열 필드
+	// 생성자 생성자는 반환 타입이 없음 이름만 있으면 된다
 
-		Student[] students = new Student[100];
+	StudentExe() {
 
-		while (run) {
+		students = new Student[100];
 
-			System.out.println("1.등록 2.목록 3.단건조회 4.수정 5.삭제 6.종료");
+		// 필드
 
-			int menu = Integer.parseInt(scn.nextLine());
+	}
 
-			switch (menu) {
+	// 추가. 매개값
 
-			case 1:
+	boolean addStudent(Student std) {
+		for (int i = 0; i < students.length; i++) {
+			if (students[i] == null) {
+				students[i] = std;
+				// break;
+				return true; // 메소드에서 return문 메소드의 끝.
+			}
+		}
+		return false;
+	}
 
-				System.out.println("학생번호입력>>");
 
-				String no = scn.nextLine();
 
-				System.out.println("학생 이름 입력");
+	// 목록.
+	Student[] getStudentList() {
+		return students;
+	}
 
-				String name = scn.nextLine();
 
-				System.out.println("영어 점수 입력");
+	// 단건조회
+	Student getStudent(String no) {
+		for (int i = 0; i < students.length; i++) {
+			if (students[i] != null && students[i].getStudNo().equals(no)) {
+				return students[i];
+			}
+		}
+		return null;
+	}
 
-				int eng = Integer.parseInt(scn.nextLine());
 
-				System.out.println("수학 점수 입력");
+	// 수정.
+	boolean modifyStudent(String no, int eng, int mat) {
+		for (int i = 0; i < students.length; i++) {
+			if (students[i] != null && students[i].getStudNo().equals(no)) {
+				students[i].setEngScore(eng);
+				students[i].setMathScore(mat);
+				return true;
+			}
+		}
+		return false;
+	}
 
-				int mat = Integer.parseInt(scn.nextLine());
 
-				Student std = new Student(no, name, eng, mat);
+	// 삭제
+	boolean removeStudent(String name) {
+		for (int i = 0; i < students.length; i++) {
+			if (students[i] != null && students[i].getStudName().equals(name)) {
+				students[i] = null;
+				return true;
+			}
+		}
+		return false;
+	}
 
-				if (exe.addStudent(std)) {
-
-					System.out.println("저장 되었습니다.");
-
-				} else {
-
-					System.out.println("저장 중 오류 발생");
-
-				}
-
-				break;
-
-			case 2: // 목록보기
-
-				for (Student stdnt : exe.getStudentList()) {
-
-					if (stdnt != null) {
-
-						stdnt.showInfo();
-
-					}
-
-				}
-
-				for (int i = 0; i < students.length; i++) {
-
-					if (students[i] != null) {
-
-						students[i].showInfo();
-
-					}
-
-				}
-
-				break;
-
-			case 3:// 단건 조회
-
-				System.out.println("조회할 학생 번호 입력");
-
-				no = scn.nextLine();
-
-				Student stnt = exe.getStudent(no);
-
-				if (stnt != null) {
-
-					stnt.showInfo();
-
-				} else {
-
-					System.out.println("존재하지 않는 정보");
-
-				}
-
-				break;
-
-			case 4: // 수정
-
-				System.out.println("조회할 학생 번호 입력>>");
-
-				no = scn.nextLine();
-
-				System.out.println("영어점수 입력>>");
-
-				eng = Integer.parseInt(scn.nextLine());
-
-				System.out.println("수학 점수 입력");
-
-				mat = Integer.parseInt(scn.nextLine());
-
-				if (exe.modifyStudent(no, eng, mat)) {
-
-					System.out.println("수정 완료");
-
-				} else {
-
-					System.out.println("수정 실패");
-
-				}
-
-				break;
-
-			case 5:// 삭제
-
-				System.out.println("삭제할 학생 이름 입력>>");
-
-				name = scn.nextLine();
-
-				if (exe.removeStudent(name)) {
-
-					System.out.println("삭제완료");
-
-				} else {
-
-					System.out.println("삭제 실패");
-
-				}
-
-				break;
-
-			case 6:
-
-				System.out.println("프로그램을 종료합니다");
-
-				run = false;
-
-			}// end of switch
-
-		} // end of while
-
-		System.out.println("end of prog");
-
-	}// end of main
-
-
-
-}
+} //end of class
