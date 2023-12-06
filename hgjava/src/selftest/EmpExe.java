@@ -11,7 +11,7 @@ public class EmpExe {
 	//생성자
 	EmpExe(){
 		emps = new ArrayList<Emp>();
-		emps.add(new Emp("사번,, "이름", 전화번호" "입사일자",));
+		emps.add(new Emp("사번, "이름", 전화번호" "입사일자","급여"));
 		
 	}
 	

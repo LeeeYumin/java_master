@@ -26,7 +26,7 @@ public class StudentApp {
 				System.out.println("수학 점수 입력>> ");
 				int math = Integer.parseInt(scn.nextLine());
 
-				Student std = new Student(stuNo, stuName, eng, math); // 17줄 public Student 타입 맞아야 오류X
+				Student std = new Student(stuNo, stuName, eng, math); // public Student 타입 맞아야 오류X
 				// 4가지 값을 다 받는 생성자. students 배열에 한건 저장
 //				for (int i=0; i < students.length; i++) {
 //					if(students[i] == null) {
