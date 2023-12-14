@@ -2,7 +2,7 @@ package Todo.p20231205;
 //도서정보. 도서코드/도서명/저자/출판사/가격 정보 저장
 public class Book {
 
-	private String bCode;
+	private String bCode; //이게 키역할
 	private String bName;
 	private String writer;
 	private String bCom;

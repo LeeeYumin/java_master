@@ -10,7 +10,10 @@ public class StudentApp {
 		Student[] students = new Student[100];
 
 		Scanner scn = new Scanner(System.in);
+
 		StudentExe exe = new StudentExe();
+		StudentDAO dao = new StudentDAO(); // 클래스이름 대소문자 같아야 됨
+
 		while (run) {
 			System.out.println("1.등록 2.목록 3.단건조회 4.수정 5.삭제.6.종료");
 			int menu = Integer.parseInt(scn.nextLine()); // 숫자로만 선택가능
@@ -28,14 +31,8 @@ public class StudentApp {
 
 				Student std = new Student(stuNo, stuName, eng, math); // public Student 타입 맞아야 오류X
 				// 4가지 값을 다 받는 생성자. students 배열에 한건 저장
-//				for (int i=0; i < students.length; i++) {
-//					if(students[i] == null) {
-//						students[i] = std;
-//						break;
-//					}
-//				}
-				if (exe.addStudent(std)) {
-					;
+				if (dao.addStudent(std)) { // 기존 exe 에서 dao 로 수정.
+
 					System.out.println("저장되었습니다");
 				} else {
 					System.out.println("저장 중 오류");
@@ -47,9 +44,9 @@ public class StudentApp {
 //						students[i].showInfo();
 //					}
 //				}
-				//Student[] stdAry = exe.getStudentList(); 두개가 같다.
-				//그래서 밑에 exe.getStudentList() 대신 stdAry넣어도 됨.
-				for (Student stdnt : exe.getStudentList()) {
+				Student[] stdAry = dao.getStudentList(); // 두개가 같다.
+				// 그래서 밑에 exe.getStudentList() 대신 stdAry넣어도 됨.
+				for (Student stdnt : stdAry) {
 					if (stdnt != null) {
 						stdnt.showInfo();
 					}
@@ -63,7 +60,7 @@ public class StudentApp {
 //						 students[i].showInfo();
 //					}
 //				}
-				Student stnt = exe.getStudent(stuNo);
+				Student stnt = dao.getStudent(stuNo);
 				if (stnt != null) {
 					stnt.showInfo();
 				} else {
@@ -90,9 +87,9 @@ public class StudentApp {
 //				}
 //				if (!exists) {
 //					System.out.println("존재하지 않는 정보");
-				if(exe.modifyStudent(stuNo, eng, math)) {
+				if (dao.modifyStudent(eng, math, stuNo)) {
 					System.out.println("수정완료");
-				}else{
+				} else {
 					System.out.println("수정실패");
 				}
 				break;
@@ -100,9 +97,9 @@ public class StudentApp {
 //				exists = true;
 				System.out.println("삭제할 학생 이름 입력>> ");
 				stuName = scn.nextLine();
-				if (exe.removeStudent(stuName)) {
+				if (dao.removeStudent(stuName)) {
 					System.out.println("삭제완료");
-				}else {
+				} else {
 					System.out.println("삭제실패");
 				}
 				break;

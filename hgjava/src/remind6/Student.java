@@ -8,10 +8,15 @@ public class Student {
 
 	// 학생앱에서 이어 작업
 
-	String stuNo;
+	String stuNo; //오라클에서는 stu_no로.
 	String stuName;
 	int eng;
 	int math;
+	
+	//기본생성자 만들어줌 (StudentDAO 작업중에 오류)
+	Student(){
+		
+	}
 
 	public Student(String stuNo, String stuName, int eng, int math) {
 		this.stuNo = stuNo;
