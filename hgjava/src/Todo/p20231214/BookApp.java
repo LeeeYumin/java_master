@@ -6,19 +6,21 @@ import java.util.Scanner;
 import remind6.StudentDAO;
 
 public class BookApp {
+	Scanner scn = new Scanner(System.in);
+	BookDAO dao = new BookDAO();
+	
 	public static void main(String[] args) {
+		
 		boolean run = true;
 
-		Scanner scn = new Scanner(System.in);
-		BookExe exe = new BookExe();
-		BookDAO dao = new BookDAO();
 
 		while (run) {
 			System.out.println("1.등록 2.목록 3.단건조회 4.수정 5.삭제 6.종료");
+			System.out.print("입력 시작> ");
 			int menu = Integer.parseInt(scn.nextLine()); // "1"
 
 			switch (menu) {
-			case 1:
+			case 1: //1.등록
 				System.out.println("도서코드입력>> ");
 				String code = scn.nextLine();
 				System.out.println("도서명입력>> ");
