@@ -30,6 +30,11 @@ public class Member {
 	}
 	
 	void showInfo() {
-		System.out.println(this.cuser + " , " + this.cname + " , " + this.pname + " , " +this.dname);
+		System.out.println(this.cuser + " , " + this.cname + " , " + this.pnumber + " : " +  this.pname + " , " + this.dnumber + " : " + this.dname + " / " + this.take);
 	}
-}
+
+	
+	
+	
+	
+} //end of class

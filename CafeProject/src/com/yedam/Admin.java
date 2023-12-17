@@ -12,16 +12,16 @@ public class Admin {
 	private int pnumber;
 	private String pname;
 	private int pprice;
-	private int take;
 	private int dnumber;
 	private String dname;
 	private int dprice;
+	private int take;
 	
 	Admin(){
 		
 	}
 	
-	public Admin(int cuser, String cname, int pnumber, String pname, int pprice,int take, int dnumber, String dname, int dprice) {
+	public Admin(int cuser, String cname, int pnumber, String pname, int pprice, int dnumber, String dname, int dprice, int take) {
 		this.cuser = cuser;
 		this.cname = cname;
 		this.pnumber = pnumber;
@@ -34,11 +34,12 @@ public class Admin {
 	}
 	
 	void showInfo() {
-		System.out.println(cuser + cname + 
+		System.out.println(cuser + cname + take +
 					"\n" + pnumber + pname + pprice + 
 					"\n" + dnumber + dname + dprice);
 	
 	}
-	
+
+
 
 } //end of class
