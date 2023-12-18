@@ -1,5 +1,6 @@
 package com.yedam;
-//실행
+
+//실행(구현)
 
 import java.util.*;
 
@@ -26,7 +27,7 @@ public class CafeApp {
 				System.out.println("다시 확인해주세요");
 			}
 		}
-		//logon
+		//log on
 
 		
 		while (run) {
@@ -44,7 +45,7 @@ public class CafeApp {
 				String take = scn.nextLine();
 
 				Product prod = new Product(pnumber, dnumber, take);
-				if (dao.order(pnumber, dnumber, take)) {
+				if (dao.order(pnumber, dnumber, take) != null) {
 					System.out.println("주문이 완료되었습니다");
 				} else {
 					System.out.println("저장 중 오류 발생");

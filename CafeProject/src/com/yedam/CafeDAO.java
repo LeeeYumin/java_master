@@ -22,6 +22,8 @@ public class CafeDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	Connection getConn() {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -69,11 +71,12 @@ public class CafeDAO {
 				product.setPnumber(rs.getInt("p_number"));
 				product.setDnumber(rs.getInt("d_number"));
 				product.setTake(rs.getString("take"));
-				for (int i = 0; i < products.size(); i++) {
-					if (products != null) {						
-						break;
-					}
-				}
+//				for (int i = 0; i < products.size(); i++) {
+//					if (products != null) {
+//						product
+//						break;
+//					}
+//				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
