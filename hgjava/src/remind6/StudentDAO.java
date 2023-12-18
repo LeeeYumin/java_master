@@ -15,6 +15,20 @@ public class StudentDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs; // 자주 쓸거니까 위로 뺌.
+	
+	//연결접속 해제
+	void disconn() {
+		try {
+			if(conn != null)
+				conn.close();
+			if(rs != null)
+				rs.close();
+			if(psmt != null)
+				psmt.close();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	}
 
 	Connection getConn() {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -24,6 +38,8 @@ public class StudentDAO {
 			System.out.println("연결 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally{
+			disconn();
 		}
 		return conn;
 	}
@@ -52,6 +68,8 @@ public class StudentDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			disconn();
 		}
 		return students;
 	} // end of getStudentList().
@@ -75,6 +93,8 @@ public class StudentDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			disconn();
 		}
 		return false;
 	} // end of addStudent
@@ -116,6 +136,8 @@ public class StudentDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			disconn();
 		}
 		return false;
 	}// modifyStudent
@@ -133,6 +155,8 @@ public class StudentDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			disconn();
 		}
 		return false;
 	}

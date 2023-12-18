@@ -17,7 +17,6 @@ public class StudentApp {
 		while (run) {
 			System.out.println("1.등록 2.목록 3.단건조회 4.수정 5.삭제.6.종료");
 			int menu = Integer.parseInt(scn.nextLine()); // 숫자로만 선택가능
-
 			switch (menu) {
 			case 1:
 				System.out.println("학생 번호 입력>> ");
