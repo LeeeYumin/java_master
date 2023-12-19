@@ -25,8 +25,7 @@ public class CafeApp {
 			} else {
 				System.out.println("다시 확인해주세요");
 			}
-		}
-		// log on
+		} // log on
 
 		while (run) {
 			System.out.println("1.주문하기 2.주문내역 3.주문취소 4.주문수정 5.종료");
@@ -89,7 +88,7 @@ public class CafeApp {
 				System.out.println("회원번호를 입력해주세요");
 				cuser = Integer.parseInt(scn.nextLine());
 				// 주문한 내역 보이기
-				
+
 				System.out.println("주문한 메뉴를 수정하시겠습니까? 1:수정 2:수정취소");
 				int modi = Integer.parseInt(scn.nextLine());
 				// 1,2,3 중에서 하나 누르면 "변경할 메뉴를 입력해주세요" 뜨게
