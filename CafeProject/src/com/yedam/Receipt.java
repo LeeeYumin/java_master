@@ -1,23 +1,19 @@
 package com.yedam;
-//Member의 개인 주문 이력 조회
+
+//Member 개인 주문 이력 조회
+
+import lombok.Data;
+
+@Data
 public class Receipt {
 
 	int cuser;
-	String pname;
-	String dname;
-	
-	Receipt(){
-		
+	String cName;
+	String pName;
+	String dName;
+	String take;
+
+	String showInfo() {
+		return this.cName + " : " + this.pName + ", " + this.dName + " / " + this.take;
 	}
-	
-	public Receipt (int cuser, String pname, String dname) {
-		this.cuser = cuser;
-		this.pname = pname;
-		this.dname = dname;
-	}
-	
-	void showInfo() {
-		System.out.println(this.cuser + " : " + this.pname + " ," + this.dname);
-	}
-	
-} //end
+} // end

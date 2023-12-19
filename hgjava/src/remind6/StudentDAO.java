@@ -16,7 +16,7 @@ public class StudentDAO {
 	PreparedStatement psmt;
 	ResultSet rs; // 자주 쓸거니까 위로 뺌.
 	
-	//연결접속 해제
+	//연결접속 해제. listener 가 있어야하고 닫아줘야 대기상태로 변함..
 	void disconn() {
 		try {
 			if(conn != null)

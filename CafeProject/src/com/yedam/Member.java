@@ -1,5 +1,4 @@
 package com.yedam;
-//회원
 
 import lombok.Data;
 
