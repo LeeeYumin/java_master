@@ -10,4 +10,4 @@ public class Product {
 	String pname;
 	int pprice;
 
-}// end
+}//  end of class

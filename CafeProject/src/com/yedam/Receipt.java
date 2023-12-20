@@ -8,12 +8,12 @@ import lombok.Data;
 public class Receipt {
 
 	int cuser;
-	String cName;
-	String pName;
-	String dName;
+	String cname;
+	String pname;
+	String dname;
 	String take;
 
 	String showInfo() {
-		return this.cName + " : " + this.pName + ", " + this.dName + " / " + this.take;
+		return this.cname + " : " + this.pname + ", " + this.dname + " / " + this.take;
 	}
-} // end
+} //  end of class

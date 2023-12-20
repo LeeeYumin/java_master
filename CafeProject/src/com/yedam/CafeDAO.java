@@ -26,7 +26,7 @@ public class CafeDAO {
 	}
 
 	Connection getConn() {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe"; // @192.168.0.23:1521:
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
@@ -89,7 +89,7 @@ public class CafeDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
-			while (rs.next()) { 
+			while (rs.next()) {
 				Dessert product = new Dessert();
 				product.setDnumber(rs.getInt("d_number"));
 				product.setDname(rs.getString("d_name"));
@@ -142,9 +142,9 @@ public class CafeDAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				Receipt receipt = new Receipt();
-				receipt.setCName(rs.getString("c_name"));
-				receipt.setPName(rs.getString("p_name"));
-				receipt.setDName(rs.getString("d_name"));
+				receipt.setCname(rs.getString("c_name"));
+				receipt.setPname(rs.getString("p_name"));
+				receipt.setDname(rs.getString("d_name"));
 				receipt.setTake(rs.getString("take"));
 
 				receipts.add(receipt);
@@ -177,17 +177,14 @@ public class CafeDAO {
 	}
 
 // 주문수정
-	boolean modifyOrder(String pName, String dName, String take, int cuser) {
+	boolean modifyOrder(String pname, String dname, String take, int cuser) {
 		getConn();
 		ArrayList<Receipt> receipts = new ArrayList<Receipt>();
-		String sql ="update receipt " + "set p_name = ?, " + "d_name = ?, " + "take = ? " + "where c_user = ?";
-//		 		"update r.p_name, r.d_name, r.take, u.c_user\r\n"
-//				+ "from receipt r, users u\r\n"
-//				+ "where r.c_user = u.c_user;";
+		String sql = "update receipt set p_name = ?, d_name = ?, take = ? where c_user = ? ";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, pName);
-			psmt.setString(2, dName);
+			psmt.setString(1, pname);
+			psmt.setString(2, dname);
 			psmt.setString(3, take);
 			psmt.setInt(4, cuser);
 			int r = psmt.executeUpdate();
