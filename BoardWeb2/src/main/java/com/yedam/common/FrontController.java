@@ -1,0 +1,48 @@
+package com.yedam.common;
+//컨트롤러 : url을 서블릿 실행. 이건 알고 있어야된다... 20231222...
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//@WebServlet("*.do") BoardWeb2 자체에서 Run as하면 생성자호출-init service. 그 다음 엔터 다시 하면 service만 호출.
+public class FrontController extends HttpServlet{
+	//생명주기 : 생성자 -> init() -> service() -> destroy()
+	
+	Map<String, Control> map;
+	
+	public FrontController() {
+		System.out.println("생성자 호출");
+		map = new HashMap<String, Control>();
+	}
+	
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		System.out.println("init() 호출."); //url패턴이랑 실행할 controller 서블릿 등록
+		map.put("/main.do", new MainControl());
+		map.put("/sub.do", new SubControl()); //기능은 없고 만들어보는거
+	}
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("service() 호출.");
+		String url = req.getRequestURI(); // /BoardWeb2/main.do 를 읽어오는걸 url 이라는 변수에 담는다
+		String context = req.getContextPath(); // /BoardWeb2의 값을 가지고 와서
+		String path = url.substring(context.length()); //main이 키값.
+		System.out.println(path);
+		//어떤 url이 따라오느냐에 따라 처리하는게 다른..? 이건 이해해야 되는 부분임...
+		Control ctrl = map.get(path);
+		ctrl.execute(req, resp);
+	}
+	
+	@Override
+	public void destroy() {
+		System.out.println("destroy() 호출.");
+	}
+}

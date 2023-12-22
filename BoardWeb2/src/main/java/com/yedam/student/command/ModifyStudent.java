@@ -1,4 +1,4 @@
-package common;
+package com.yedam.student.command;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,6 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.yedam.student.mapper.StudentDAO;
+import com.yedam.student.service.StudentService;
+import com.yedam.student.serviceImpl.StudentServiceImpl;
+import com.yedam.student.vo.Student;
 
 
 @WebServlet("/modifyStudent")//url 의미함. 소문자로 바꿔줬다
@@ -26,7 +31,7 @@ public class ModifyStudent extends HttpServlet {
 		
 		String sno = request.getParameter("sno");
 		
-		StudentDAO dao = new StudentDAO();
+		StudentService dao = new StudentServiceImpl(); //~DAO 에서 인터페이스 작업 후 ~Service로 변경
 		Student std = dao.getStudent(sno);
 		
 		

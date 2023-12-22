@@ -1,4 +1,4 @@
-package common;
+package com.yedam.student.command;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,6 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.yedam.student.mapper.StudentDAO;
+import com.yedam.student.service.StudentService;
+import com.yedam.student.serviceImpl.StudentServiceImpl;
+import com.yedam.student.serviceImpl.StudentServiceMybatis;
+import com.yedam.student.vo.Student;
 
 /**
  * Servlet implementation class StudentListServ
@@ -29,8 +35,8 @@ public class StudentListServ extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		// 목록 페이지
-		StudentDAO dao = new StudentDAO();
-		List<Student> list = dao.getStudentList();
+		StudentService dao = new StudentServiceMybatis(); //~DAO 에서 인터페이스 작업 후 ~Service로 변경. StudentServiceImpl에서 Mybatis로 또 변경
+		List<Student> list = dao.studentList(); //.get에서 studentList로 변경
 
 		// out.print("<table border = '1'>");
 		String str = "<table border = '1'>";
@@ -44,6 +50,9 @@ public class StudentListServ extends HttpServlet {
 		//서블릿의 기능을 보았다...
 		
 		out.print(str);
+		
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

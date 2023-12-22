@@ -1,4 +1,4 @@
-package common;
+package com.yedam.student.vo;
 
 public class Student {
 	// 학생번호 23-001, 23-002 getStudNo 이런식으로
@@ -14,7 +14,7 @@ public class Student {
 	int math;
 	
 	//기본생성자 만들어줌 (StudentDAO 작업중에 오류)
-	Student(){
+	public Student(){
 		
 	}
 

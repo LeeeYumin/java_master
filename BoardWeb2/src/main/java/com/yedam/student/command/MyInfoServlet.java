@@ -1,4 +1,4 @@
-package common; //http://localhost/BoardWeb/MyInfoServlet
+package com.yedam.student.command; //http://localhost/BoardWeb/MyInfoServlet
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,10 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.student.mapper.StudentDAO;
+import com.yedam.student.service.StudentService;
+import com.yedam.student.serviceImpl.StudentServiceImpl;
+import com.yedam.student.serviceImpl.StudentServiceMybatis;
+import com.yedam.student.vo.Student;
+
 /**
  * Servlet implementation class MyInfoServlet
  */
-@WebServlet("/MyInfoServlet") //이게 url
+@WebServlet("/MyInfoServlet") //이게 url 여기서 Run as 실행하기
 public class MyInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,8 +45,9 @@ public class MyInfoServlet extends HttpServlet {
 		
 		//db 저장
 		Student std = new Student(sno, sname,Integer.parseInt(mscore), Integer.parseInt(escore));
-		StudentDAO dao = new StudentDAO();
+		StudentService dao = new StudentServiceMybatis(); //~DAO 에서 인터페이스 작업 후 ~Service로 변경, ~Mybatis로도 변경...
 		boolean done = dao.addStudent(std);
+		//boolean done = dao.addStudent(std); 실행시 파라메터 넣어주고 OK 뜨고 목록에 넣은 값이 표에 들어감 & sql 에도 값이 들어가있으면 된것.
 		
 		PrintWriter out= response.getWriter(); //이거 쓰고 import
 		//out.append("Served at: ").append(request.getContextPath());
