@@ -16,10 +16,10 @@ public class MainControl implements Control {
 		//System.out.println("메인컨트롤...");
 		BoardService svc = new BoardServiceMybatis();
 		List<BoardVO> list = svc.boardList();
-		for (BoardVO : list) {
+		for (BoardVO vo : list) { //html에 이부분은 vo 빠져있어서 수정해줌
 			System.out.println(vo.toString());
 		}
 		
 	}
 
-}
+} //end of main

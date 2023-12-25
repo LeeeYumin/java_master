@@ -1,4 +1,4 @@
-package com.yedam.student.command;
+package com.yedam.student.command; //
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,7 +19,7 @@ import com.yedam.student.vo.Student;
 /**
  * Servlet implementation class StudentListServ
  */
-@WebServlet("/studentList") // 이건 밑의 StudentListServ 를 실행하기 위한 url
+@WebServlet("/studentList") // 이건 밑의 StudentListServ 를 실행하기 위한 url 여기서 Run as 해줌!!
 public class StudentListServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

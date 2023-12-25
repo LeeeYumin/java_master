@@ -46,5 +46,8 @@ public class UpdateStudent extends HttpServlet {
 			
 		}
 	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		doGet(request, response);
+//	}
 
-}
+} //end of class

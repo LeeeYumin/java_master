@@ -27,39 +27,55 @@ public class MainExe { // 만든거 제대로 되는지 테스트. 서버말고 
 
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		BoardVO vo = new BoardVO();
-		vo.setTitle("aaaa");
-		vo.setContent("123123");
-		vo.setWriter("123123");
-		vo.setBoardNo(4);
+//		vo.setTitle("aaaa");
+//		vo.setContent("123123");
+//		vo.setWriter("123123");
+//		vo.setBoardNo(4); sql에 들어가는지 확인..?
 
-		//목록
-//		List<BoardVO> list = mapper.selectList(); 이건 목록보는거. 이거 하고 업데이트구문 해서 주석처리함
-//		for(BoardVO vo : list){
-//			System.out.println(vo.toString()); //run as 자바로 실행
-		
-		//단건조회, 추가, 수정, 삭제
-
-		List<BoardVO> list = mapper.insertBoard();
-		
-		if (mapper.updateBoard(vo) == 1) {
-			System.out.println("작성됨");
-		} else {
-			System.out.println("작성안됨");
+		// 목록
+		List<BoardVO> list = mapper.selectList(); // 이건 목록보는거. 이거 하고 업데이트구문 해서 주석처리함
+		for (BoardVO bvo : list) {
+			System.out.println(vo.toString()); // run as 자바로 실행
 		}
-		
-		
-		
-		
-		//조회수 증가
-//		if(mapper.updateCnt(2) == 1) {
-//			System.out.println("조회수 증가됨");
-//		} else {
-//			System.out.println("조회수 증가 안됨");
-//		}
-		
-		
-		
-		
-	} //end of main
+
+		// 단건조회
+		vo = mapper.selectOne(2);
+		System.out.println(vo.toString());
+
+		// 추가
+		vo.setTitle("피곤하다");
+		vo.setWriter("id1357");
+		vo.setContent("제곧내");
+		if (mapper.insertBoard(vo) > 0) {
+			System.out.println("글이 추가되었습니다");
+		} else {
+			System.out.println("추가되지않았습니다");
+		}
+
+		// 수정
+		// List<BoardVO> list = mapper.insertBoard(); 아닌가보다..
+		vo.setBoardNo(2);
+		vo.setContent("진짜진짜피곤해");
+		if (mapper.updateBoard(vo) == 1) {
+			System.out.println("수정됨");
+		} else {
+			System.out.println("수정안됨");
+		}
+
+		// 삭제
+		if (mapper.deleteBoard(3) == 1) {
+			System.out.println("삭제됨");
+		} else {
+			System.out.println("삭제안됨");
+		}
+
+		// 조회수 증가
+		if (mapper.updateCnt(2) == 1) {
+			System.out.println("조회수 증가됨");
+		} else {
+			System.out.println("조회수 증가 안됨");
+		}
+
+	} // end of main
 
 }// end of class
