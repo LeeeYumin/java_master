@@ -1,6 +1,8 @@
 package com.yedam.board.command;
+//20231226수업. 데이터 가져와서 값 보냄. 페이지 재지정은 url.
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,28 +14,23 @@ import com.yedam.board.serviceImpl.BoardServiceMybatis;
 import com.yedam.board.vo.BoardVO;
 import com.yedam.common.Control;
 
-public class ModifyFormControl implements Control { // 수정되는 화면 보여지는 부분
+public class BoardListControl implements Control {
 
-	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// 글번호 조회 GetBoardControl 복사하고 부분 수정
 
-		// 글번호 조회
-		String bno = req.getParameter("bno");
-
+		// 게시글 목록을 boardList.jsp 로 전달
 		BoardService svc = new BoardServiceMybatis();
-		BoardVO vo = new BoardVO();
+		List<BoardVO> list = svc.boardList();
+		req.setAttribute("boardList", list);
 
-		req.setAttribute("vo", vo);
-
-		// 페이지 이동(forward) 복사. 사용자가 url 입력하면 board/,odBoardForm.jsp로 이동함
-		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/modBoardForm.jsp");
+		// 페이지 이동. 사용자가 url 입력하면 "board/boardList.jsp" 페이지로 이동
+		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/boardList.jsp");
 		try {
-			rd.forward(req, resp); // 요청을 재지정 하겠음
+			rd.forward(req, resp); // 요청을 재지정하겠다
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-}
+} //end

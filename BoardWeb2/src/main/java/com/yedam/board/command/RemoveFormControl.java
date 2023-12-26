@@ -18,20 +18,20 @@ public class RemoveFormControl implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// 글번호 조회
 		String bno = req.getParameter("bno");
-		
+
 		BoardService svc = new BoardServiceMybatis();
 		BoardVO vo = svc.getBoard(Integer.parseInt(bno));
-		
+
 		req.setAttribute("vo", vo);
-		
-		//페이지 이동(forward)
-		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/getBoard.jsp");
+
+		// 페이지 이동(forward). 사용자가 입력시 "board/remBoardForm.jsp" 페이지 이동
+		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/remBoardForm.jsp");
 		try {
-			rd.forward(req, resp); 
+			rd.forward(req, resp); // 요청 재지정함
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-}
+} //
