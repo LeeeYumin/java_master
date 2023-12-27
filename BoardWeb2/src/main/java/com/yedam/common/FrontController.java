@@ -45,14 +45,14 @@ public class FrontController extends HttpServlet {
 //		map.put("/sub.do", new SubControl()); //기능은 없고 만들어보는거. 12.26일 수업때 주석처리함
 		
 		//게시판관련 여기 있는 주소 url 에 치고 접속
-		map.put("/boardList.do", new BoardListControl()); //<String, Control> 이 순서로 넣음. vscode 작업 후 /boardList.do 넣음.
-		map.put("/boardForm.do", new BoardFormControl()); //addBoard.do?title=테스트&content=입력내용&writer=홍길동
-		map.put("/addBoard.do", new AddBoardControl());
-		map.put("/getBoard.do", new GetBoardControl());
-		map.put("/modifyForm.do", new ModifyFormControl());
-		map.put("/modifyBoard.do", new ModifyBoardControl());
-		map.put("/removeForm.do", new RemoveFormControl()); //modifyBoard->removeForm으로 수정함. ModifyBoardControl->RemoveFormControl 수정함.
-		map.put("/removeBoard.do", new RemoveBoardControl()); //삭제
+		map.put("/boardList.do", new BoardListControl()); //<String, Control> 이 순서로 넣음. vscode 작업 후 /boardList.do 넣음. /목록조회
+		map.put("/boardForm.do", new BoardFormControl()); //addBoard.do?title=테스트&content=입력내용&writer=홍길동     /등록
+		map.put("/addBoard.do", new AddBoardControl());//추가하고 다시 목록
+		map.put("/getBoard.do", new GetBoardControl());//상세조회
+		map.put("/modifyForm.do", new ModifyFormControl());//수정화면
+		map.put("/modifyBoard.do", new ModifyBoardControl());//수정처리되고 다시 목록으로
+		map.put("/removeForm.do", new RemoveFormControl()); //modifyBoard->removeForm으로 수정함. ModifyBoardControl->RemoveFormControl 수정함. /삭제화면
+		map.put("/removeBoard.do", new RemoveBoardControl()); //삭제 /삭제처리하는거
 		
 		//회원관련
 		map.put("/loginForm.do", new LoginFormControl());
@@ -60,8 +60,8 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new LogoutControl());
 		
 		//tiles.관련
-		map.put("/studentList.do", new StudentListCont());
-		map.put("/studentInfo.do", new StudInfoCont());
+		map.put("/studentList.do", new StudentListCont()); //학생목록
+		map.put("/studentInfo.do", new StudInfoCont()); //학생단건조회 url 뒤에 ?sno=23-001
 	}
 	
 
