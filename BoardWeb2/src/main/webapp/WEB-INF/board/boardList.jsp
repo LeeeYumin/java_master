@@ -1,15 +1,14 @@
-<%@page import="java.util.List"%>
-<%@page import="com.yedam.board.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file ="../layout/menu.jsp" %>
-<%@include file ="../layout/nav.jsp" %>
 
-	<%
-	List<BoardVO> list = (List<BoardVO>) request.getAttribute("boardList"); 
-	%>
+<!-- 12.27  -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 
 	<h3>게시판</h3>
+	<!-- EL(Expression Language) 간단한 연산식만 가능함. 표현식은 주석처리해도 처리되니 사용금지 -->
+	${3>2?'참':'거짓' }
 	<table class="table">
 		<thead>
 			<tr>
@@ -21,15 +20,14 @@
 			</tr>
 		</thead>
 		<tbody>
-		<% for(BoardVO vo: list) { %>
+		<c:forEach var="vo" items="${boardList}">
 			<tr>
-			<td><%=vo.getBoardNo() %></td>
-			<td><a href="getBoard.do?bno=<%=vo.getBoardNo() %>"><%=vo.getTitle() %></td>
-			<td><%=vo.getWriter() %></td>
-			<td><%=vo.getWriteDate() %></td>
-			<td><%=vo.getClickCnt() %></td>
+			<td>${vo.boardNo }</td>
+			<td><a href="getBoard.do?bno=${vo.boardNo }">${vo.title }</a></td>
+			<td>${vo.writer }</td>
+			<td><fmt:formatDate value="${vo.writeDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
+			<td>${vo.clickCnt }</td>
 			</tr>
-		<% } %>
+		</c:forEach>
 		</tbody>
 	</table>
-<%@ include file ="../layout/foot.jsp" %>

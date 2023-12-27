@@ -4,6 +4,19 @@
   
   <!-- 주석... 밑에 html 빼고 다 지우고 html 이라서 주석도 이렇게 넣음. 
   frontcontroller의 url 등록-->
+  <listener>
+    <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+</listener>
+<servlet>
+    <servlet-name>Tiles Dispatch Servlet</servlet-name>
+    <servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Tiles Dispatch Servlet</servlet-name>
+    <url-pattern>*.tiles</url-pattern>
+</servlet-mapping>
+ <!-- tiles 에서 2개 가져옴 -->
+  
   <servlet>
   	<servlet-name>front</servlet-name>
   	<servlet-class>com.yedam.common.FrontController</servlet-class>
@@ -11,13 +24,11 @@
   
   <servlet-mapping>
   	<servlet-name>front</servlet-name>
-  	<url-pattern>*.do</url-pattern>
+  	<url-pattern>*.do</url-pattern> <!-- .do가 들어오면 실행시켜라 -->
   </servlet-mapping>
   
-  
-  
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
 </web-app>
