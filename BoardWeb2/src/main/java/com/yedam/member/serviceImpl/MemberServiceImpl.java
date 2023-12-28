@@ -1,9 +1,10 @@
 package com.yedam.member.serviceImpl;
 
+import java.util.List;
+
 //인터페이스를 구현하는 클래스임
 import org.apache.ibatis.session.SqlSession;
 
-import com.yedam.board.mapper.BoardMapper;
 import com.yedam.common.DataSource;
 import com.yedam.member.mapper.MemberMapper;
 import com.yedam.member.service.MemberService;
@@ -18,6 +19,10 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO login(String id, String pw) {
 
 		return mapper.selectMember(id, pw);
+	}
+	
+	public List<MemberVO> memberList(){
+		return mapper.selectList();
 	}
 
 } //

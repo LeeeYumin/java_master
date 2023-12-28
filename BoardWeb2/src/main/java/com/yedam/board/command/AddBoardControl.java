@@ -18,25 +18,22 @@ public class AddBoardControl implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// param(3개), db insert, 목록페이지.
 		// get요청일때/ post요청일때...
-		
+
 		BoardVO vo = new BoardVO();
-		
+
 		if (req.getMethod().equals("GET")) {
 
 			String title = req.getParameter("title");
 			String writer = req.getParameter("writer");
 			String content = req.getParameter("content");
-			
+
 			vo.setTitle(title);
 			vo.setContent(content);
 			vo.setWriter(writer);
 
-			// svc : addBoard()
-
-
 		} else if (req.getMethod().equals("POST")) {
 			// 파일업로드 포함.
-			String saveLoc = req.getServletContext().getRealPath("image");
+			String saveLoc = req.getServletContext().getRealPath("images");
 			int maxSize = 1024 * 1024 * 5;
 			MultipartRequest mr = null;
 
@@ -48,28 +45,27 @@ public class AddBoardControl implements Control {
 				String writer = mr.getParameter("writer");
 				String image = mr.getFilesystemName("image");
 
-				
 				vo.setTitle(title);
 				vo.setContent(content);
 				vo.setWriter(writer);
 				vo.setImage(image);
 
-				// svc : addBoard()
-				BoardService svc = new BoardServiceMybatis();
-
-				try {
-					if (svc.addBoard(vo)) {
-						resp.sendRedirect("boardList.do");
-					} else {
-						resp.sendRedirect("boardForm.do");
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		} // end of if.
+
+		// svc : addBoard()
+		BoardService svc = new BoardServiceMybatis();
+		try {
+
+			if (svc.addBoard(vo)) {
+				resp.sendRedirect("boardList.do");
+			} else {
+				resp.sendRedirect("boardForm.do");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 	} // end of execute.

@@ -19,9 +19,11 @@ import com.yedam.board.command.ModifyFormControl;
 import com.yedam.board.command.RemoveBoardControl;
 import com.yedam.board.command.RemoveFormControl;
 import com.yedam.common.command.BoardListControl;
+import com.yedam.member.command.GetMemberControl;
 import com.yedam.member.command.LoginControl;
 import com.yedam.member.command.LoginFormControl;
 import com.yedam.member.command.LogoutControl;
+import com.yedam.member.command.MemberListControl;
 import com.yedam.student.command.StudInfoCont;
 import com.yedam.student.command.StudentListCont;
 
@@ -31,7 +33,7 @@ import com.yedam.student.command.StudentListCont;
 public class FrontController extends HttpServlet {
 	// 생명주기 : 생성자 -> init() -> service() -> destroy()
 
-	Map<String, Control> map;
+	Map<String, Control> map; //map 타입에 담음
 
 	public FrontController() {
 		System.out.println("생성자 호출");
@@ -59,6 +61,10 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
 		
+		//관리자 회원관리
+		map.put("/memberList.do", new MemberListControl());
+		map.put("/getMember.do", new GetMemberControl());
+		
 		//tiles.관련
 		map.put("/studentList.do", new StudentListCont()); //학생목록
 		map.put("/studentInfo.do", new StudInfoCont()); //학생단건조회 url 뒤에 ?sno=23-001
@@ -73,7 +79,7 @@ public class FrontController extends HttpServlet {
 		String path = url.substring(context.length()); // main이 키값.
 		System.out.println(path);
 		// 어떤 url이 따라오느냐에 따라 처리하는게 다른..? 이건 이해해야 되는 부분임...
-		Control ctrl = map.get(path); //ctrl 값 반환해서
+		Control ctrl = map.get(path); //ctrl 값 반환해서 (boardList.do를 담고 있음)
 		ctrl.execute(req, resp); //execute 메소드 실행
 	}
 
