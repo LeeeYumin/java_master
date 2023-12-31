@@ -44,6 +44,23 @@
             th1.innerText =  th1; 
             tr.appendChild(th1);
         }
+
+
+     
+    const datas = ['user1', '홍길동', '010-1111'];
+    let tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+    let tr2 = document.createElement('tr');
+    tbody.appendChild(tr2);
+
+    for(let data of datas) {
+      let td1 = document.createElement('td');
+      td1.innerText = data;
+      tr2.appendChild(td1);
+    }
+    bdy.appendChild(table);
+
+    
     // let th = document.createElement('th');
     // th.innerText = '아이디';
     // tr.appendChild(th);
@@ -57,25 +74,6 @@
     // thead.appendChild(tr);
     // table.appendChild(thead);
     // bd.appendChild(table);
-
-
-    let tbody = document.querySelector('tbody');
-    let table1 = document.createElement('table');
-    let tr2 = document.createElement('tr2');
-    let td = document.createElement('td');
-    td.innerText = 'user1';
-    tr2.appendChild(td);
-    let td1 = document.createElement('td1');
-    td1.innerText = '홍길동';
-    tr2.appendChild(td1);
-    let td2 = document.createElement('td2');
-    td2.innerText = '010-1111';
-    
-    tbody.appendChild(tr2);
-    table1.appendChild(tbody);
-    bd.appendChild(table);
-
-
 
     
     

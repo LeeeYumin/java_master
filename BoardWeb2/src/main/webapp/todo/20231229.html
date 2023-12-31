@@ -29,6 +29,19 @@
         const words = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus deserunt velit enim nihil nemo atque ducimus odio dolorem dolorum soluta fugit, nostrum quasi inventore consequatur praesentium nisi consequuntur! Fugiat. '
         
         const wordAry = words.split(' ');
+
+        const removeSpace = (parentElem) => {
+            if (!parentElem) return;
+
+            for (let i =0; i <parentElem.length; i++){
+                Array.from(parentElem[i].childNodes).forEach(childElem) {
+                    if(childElem.nodeType === 3) parentElem[i].removeSpace(childElem);
+                }
+            }
+                return id;
+        };
+
+
    </script>
 </body>
 </html>
