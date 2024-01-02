@@ -3,7 +3,7 @@
 function sum(num1 = 0, num2 = 0){ //그냥 (num1, num2) 하면 결과는 undefied+undefied=NaN
     let result = 0;
     //result = num1 + num2; //num1 num2는 파라메터(매개변수)
-    //console.log(result);
+    // console.log(result);
     console.log(arguments); //매개값(몇개인지 모르는 경우)으로 들어온 걸 처리해주는 객체. 해당되는 함수가 실행되는 시점에 따로 변수 선언 안해줘도 출력됨
     if(arguments.length > 2){
         for(let arg=2; arg <arguments.length; arg++) {

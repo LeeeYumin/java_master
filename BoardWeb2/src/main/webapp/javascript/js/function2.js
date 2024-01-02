@@ -38,7 +38,7 @@ function makeBody(data = [], pos = {}){
         let tr = document.createElement('tr');
         //tr에 속성 지정
         if(item.gender =='Male'){
-            tr.setAttribute('style', 'background-color : aqua')
+            tr.setAttribute('style', 'background-color : skyblue')
         }else if (item.gender =='Female'){
             tr.setAttribute('style', 'background-color : pink')
         }

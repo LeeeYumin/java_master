@@ -10,7 +10,7 @@ function makeCalendar(month) {
     makeTitle(days, document.getElementById('theader'));
     makeBody(month, document.getElementById('tbody'));
 }
-makeCalendar(1);
+makeCalendar(3);
 
 function getLastDate(month) {
     //월을 입력하면 마지막 날을 반환. 31,29,31,30,31,30...
@@ -71,15 +71,15 @@ function makeBody(month = 1, pos = {}) { //pos:position
     let lastDate = getLastDate(month);
     for (let i = 1; i <= lastDate; i++) {
         //토요일:pink, 일요일:aqua 색넣기
-        let td = document.createElement('td');
+        let td = document.createElement('td')
         //td의 속성 추가
         if ((firstDay + i) % 7 == 1){
-            td.setAttribute('style','background-color : pink');
-        }else if((firstDay + i) % 7 == 0){
             td.setAttribute('style','background-color : aqua');
+        }else if((firstDay + i) % 7 == 0){
+            td.setAttribute('style','background-color : pink');
         }
 
-        //let td = document.createElement('td')
+        
         td.innerText = i;
         tr.appendChild(td);
 
