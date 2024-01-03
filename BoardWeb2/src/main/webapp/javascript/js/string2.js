@@ -3,7 +3,7 @@
 const keyword= '홍';
 const wordAry = ['사과', '홍씨', '홍장군', '김시홍', '감자']
 //1. 배열에서 '홍'이 들어간 단어의 갯수 구하기
-//내가 적은거 2가지.. 안나옴.
+//내가 적은거 2가지.. 안나옴. 집에서 indexOf() 써봤는데 -1나옴.. 뭘까...
 let count = 0;
 for(let i = 0; i < wordAry.length; i++){
     if(wordAry[i] == '홍'){ //indexOf() 사용해서 값나오게 해보기
@@ -11,6 +11,10 @@ for(let i = 0; i < wordAry.length; i++){
     }
 }
 console.log(`count : ${count}`);
+
+let count2;
+count2 = wordAry.indexOf("홍");
+console.log(count2);
 
 const result = wordAry.filter(keyword => keyword == '홍');
 console.log(result);

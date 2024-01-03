@@ -43,7 +43,7 @@ class Calendar {
         // 날짜.
         let lastDate = this.getLastDate();
         for (let i = 1; i <= lastDate; i++) {
-            // 토욜: pink, 일욜: aqua.
+            // 토요일: pink, 일요일: aqua.
             let td = document.createElement('td');
             // td의 속성을 추가.
             if ((firstDay + i) % 7 == 1) {

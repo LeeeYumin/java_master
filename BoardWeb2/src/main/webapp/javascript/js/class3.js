@@ -49,13 +49,13 @@ obj.act = function(){
     function innerReact(caller){
         caller.value = "innerReact value";
         console.log("this.value: " + this.value); //innerAct Value
-        console.log("caller.value: " + caller.value);
+        console.log("caller.value: " + caller.value); //innerAct Value
     }
     innerAct();
     console.log("obj 객체의 this.value: " + this.value); //메소드 안임. default value
 
     innerReact(this);
-    console.log("obj 객체의 this.value: " + this.value); //innerREact Value
+    console.log("obj 객체의 this.value: " + this.value); //innerReact Value
 }
 
 obj.act();

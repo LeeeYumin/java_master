@@ -29,7 +29,7 @@
  console.log(obj3); //같은속성(중복된값)은 하나만, 아니면 다 누적된 값 출력됨
  
  //reduce 메소드 간단하게 봄...
- let result = [4,5,6].reduce((acc, curItem, idx, ary) =>{ //첫번째 값의 누산값, 현재 첫번째 순번, 인덱스, 배열그자체 
+ let result = [4,5,6].reduce((acc, curItem, idx, ary) =>{ //첫번째 값의 누산값(=초기값), 현재 첫번째 순번(현재 진행되는 값), 인덱스(인덱스번호), 배열그자체 
     console.log(acc, curItem, idx);
     return acc + curItem; //이번에 받는 값 리턴
 }, 0); //초기값 0으로 준다는 의미
