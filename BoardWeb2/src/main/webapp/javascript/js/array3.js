@@ -33,6 +33,7 @@ members.reduce((acc, member) => { //tbody 이름이 acc
 }, tbody);
 
 //map(A -> 'A'), filter(A -> B) 이부분은 검색하면서 다시 공부해보기...
+//요소들을 조합해서 새로운 배열 생성함
 let result = members.map((item, idx) => {
     let obj = {}
     obj.id = item.id;
@@ -41,22 +42,27 @@ let result = members.map((item, idx) => {
     return obj;
 });
 
+// filter() : 조건을 만족하는 새로운 배열 생성
+// 메소드체인 : 메소드를 이어서 사용(반환값이 맞아야 가능)
 result = members
-    .filter(item => item.gender == 'Female') //메소드 체인
-    .map((item, idx) => {
+    .filter(item => item.gender == 'Female') //이게 메소드 체인
+    .map((member, idx) => {
         let obj = {}
-        obj.id = item.id;
-        obj.name = item.first_name + '-' + item.last_name;
-        obj.email = item.email;
+        obj.id = membe.id;
+        obj.name = membe.first_name + '-' + member.last_name;
+        obj.email = membe.email;
         return obj;
     })
     .map(item => item.name);
-
+// return 과 {} 생략 가능    
+console.log(result);
 result.push('charles');
 result.push('Hong');
 result.push('charles');
+console.log(result);
 
-console.log(result.indexOf('charles',6));
+
+console.log(result.indexOf('charles',6)); //[7] 출력
 
 //console.log(result.indexOf('Roby-Rhubottom')); //그 위치에있는 인덱스값
 

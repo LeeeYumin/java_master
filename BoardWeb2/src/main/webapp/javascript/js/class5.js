@@ -2,12 +2,12 @@
 //Map
 const map = new Map();
 map.set('홍길동', 20); //값을 담을때 set
-map.set('김민수', 22); //(key,value)
+map.set('김민수', 22); //(key, value)
 map.set('최성우', 25);
 map.set('홍길동', 21); //같은 값이 있으면 변경돼서 보임
 
 //삭제. 주석처리하면 다시 살아남
-map.delete('최성우');
+//map.delete('최성우');
 
 console.log(map.get('김민수'));
 //map.clear(); //클리어. map 전체내용삭제. remove는 선택삭제인듯
@@ -33,7 +33,7 @@ set.add('홍성길');
 set.add('홍길동'); //set은 중복값 허용안함
 
 set.delete('김민수'); //삭제
-console.clear(); //전에 있던 콘솔 로그 지워주는 기능
+//console.clear(); //전에 있던 콘솔 로그 지워주는 기능
 console.log(set.size); //배열은 length. set은 size.
 
 set.forEach(name => console.log(name));
@@ -56,6 +56,6 @@ map.forEach((score, name) => {
         sum += score;
     }
 })
-console.log(`합계점수 : ${sum}`); //위에 김민수 22 같이 합해진다..
+console.log(`합계점수 : ${sum}`); //위에 김민수 22 같이 합해진다.. 왜지?
 
 

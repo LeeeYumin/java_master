@@ -16,4 +16,4 @@ const friend = {
     }
 }
 
-export { friend, sum, getMax }; //특정한거만 반환해서 쓸것임. export import 하려면 type="module" 붙일것
+export { friend, sum, getMax }; //특정한거만 반환해서 쓸것임. export import 하려면 type="module" 붙일것 (attribute 라고 함)

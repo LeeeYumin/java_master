@@ -15,7 +15,6 @@ console.log(count);
 // const name2 = (str) => str == 2;
 // console.log(str.every(name2));
 
-
 //4. {no:1, name:'펭수'} 형태의 값을 가지는 배열을 생성. 결과값을 strAry에 대입.
 // Array.prototype.map(function(e){
 //     return e;
@@ -36,7 +35,6 @@ console.log('3자이상횟수 ' + str.split(', ').filter(name => name.length >= 
 console.log('2자존재여부 ' + str.split(', ').some(name => name.length == 2))
 
 // 4. {no: 1, name: '펭수'} 형태의 값을 가지는 배열을 생성. 결과값을 strAry에 대입.
-
 const strAry = str.split(', ').map((item, idx) => {
     return {
         no: idx + 1,
@@ -44,6 +42,9 @@ const strAry = str.split(', ').map((item, idx) => {
     };
 });
 console.log(strAry)
+
+
+//reduce로 풀기 (교수님 풀이)
 // 1.
 console.log('콘: ', strAry.reduce((acc, obj) => {
     if (obj.name == '콘') {
@@ -51,6 +52,7 @@ console.log('콘: ', strAry.reduce((acc, obj) => {
     }
     return acc;
 }, 0));
+
 // 2.
 console.log('3자 이상: ', strAry.reduce((acc, obj) => {
     if (obj.name.length >= 3) {
@@ -58,5 +60,6 @@ console.log('3자 이상: ', strAry.reduce((acc, obj) => {
     }
     return acc;
 }, 0));
+
 // 3.
 console.log('2자: ' + strAry.some(obj => obj.name.length == 2));
