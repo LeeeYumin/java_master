@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--dom만드는 형식으로 해보기.. 숙제임!-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo/20231229</title>
+    <style>
+        #show{
+            width: 370px;
+            height: 370px;
+            background-color: bisque;
+        }
+        span{
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            background-color: cornflowerblue;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="userValue" id="userValue">
+    <button id="delBtn">삭제</button> <!--이벤트핸들러등록-->
+    <div id="show">
+        <!-- <span>Lorem</span>
+        <span>ipsum,</span> -->
+    </div>
+    <script>   
+        const words = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus deserunt velit enim nihil nemo atque ducimus odio dolorem dolorum soluta fugit, nostrum quasi inventore consequatur praesentium nisi consequuntur! Fugiat.'
+        const wordAry = words.split(' ');
+        //화면 상에 span 생성 -> reduce로          
+        let show = document.querySelector('#show');
+        //for반복문
+        wordAry.reduce((acc, word) => {
+            let span = document.createElement('span');
+            span.innerText = word;
+            acc.appendChild(span);
+            return acc;
+        }, show);
+
+        
+        //과제 한건데 틀림~ 주석처리하고 냅두자...
+        // const removeSpace = (parentElem) => {
+        //     if (!parentElem) return;
+
+        //     for (let i =0; i <parentElem.length; i++){
+        //         Array.from(parentElem[i].childNodes).forEach(childElem) {
+        //             if(childElem.nodeType === 3) parentElem[i].removeSpace(childElem);
+        //         }
+        //     }
+        //         return id;
+        // };
+
+        //id=delBtn에 클릭
+        document.getElementById('delBtn').addEventListener('click',function(){ //delBtn 누르면 함수 실행하겠다
+            //사용자의 입력값(userInput)과 화면상의 span을 다 갖고와서(spanAll) 하나씩 비교함. 같으면 span.remove();
+            //사용자 입력화면을 초기화
+            let userInput = document.querySelector('input[name=userValue]').value; //input 태그의 value 속성 갖고와야됨
+            let spanAll = document.querySelectorAll('span');
+            //console.log(spanAll);
+            for(let item of spanAll){
+                if(userInput == item.innerText){
+                    item.remove();
+                }
+            }
+            //초기화
+            document.querySelector('input[name=userValue]').value = '';
+        })
+   </script>
+</body>
+</html>
