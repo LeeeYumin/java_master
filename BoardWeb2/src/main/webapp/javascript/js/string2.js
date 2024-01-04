@@ -12,9 +12,10 @@ for(let i = 0; i < wordAry.length; i++){
 }
 console.log(`count : ${count}`);
 
+//집에서 혼자.. 안됨ㅠ
 let count2;
 count2 = wordAry.indexOf("홍");
-console.log(count2);
+console.log(wordAry.indexOf("홍"));
 
 const result = wordAry.filter(keyword => keyword == '홍');
 console.log(result);
