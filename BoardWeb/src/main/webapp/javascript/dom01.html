@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom01.html</title>
+</head>
+
+<body class="bdy">
+    <!-- 표. -->
+    <!-- 
+    <table>
+        <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>전화번호</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>user1</td>
+                <td>홍길동</td>
+                <td>010-1111</td>
+            </tr>
+        </tbody>
+    </table>
+    -->
+
+    <!-- <ul>
+        <li>apple</li>
+        <li>banana</li>
+        <li>cherry</li>
+    </ul>  -->
+
+    <script>
+        const fruits = ['apple', 'banana', 'cherry']; // new Array()
+        let bdy = document.querySelector('body');
+        let ul = document.createElement('ul');
+        // 배열 for..of..
+        for (let fruit of fruits) {
+            let li1 = document.createElement('li');
+            li1.innerText = fruit;
+            ul.appendChild(li1);
+        }
+
+        bdy.appendChild(ul);
+
+        console.log(window);
+        let btn = document.createElement('button'); // 
+        btn.innerText = 'Btn';
+        console.log(btn);
+        bdy.appendChild(btn);
+    </script>
+</body>
+
+</html>
