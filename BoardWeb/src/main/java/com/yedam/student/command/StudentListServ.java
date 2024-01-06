@@ -31,7 +31,8 @@ public class StudentListServ extends HttpServlet {
 
 		// 목록 페이지.
 		StudentService dao = new StudentServiceMybatis();
-		List<Student> list = dao.studentList();
+		//~DAO 에서 인터페이스 작업 후 ~Service로 변경. StudentServiceImpl에서 Mybatis로 또 변경
+		List<Student> list = dao.studentList(); //.get에서 studentList로 변경
 		
 
 		// out.print("<table border='1'>");
@@ -46,8 +47,10 @@ public class StudentListServ extends HttpServlet {
 					+ std.getMathmaticScore()//
 					+ "</td></tr>";
 		}
+		//<a href='getStudentServlet?sno=23-001'> 이게 이동할 페이지. 
+		//학생번호 누르면 이동할 수 있게 23-001 지우고 get 넣어줌
 		str += "</tbody></table>";
-		str += "<br><a href='student/inform.html'>등록화면</a>";
+		str += "<br><a href='student/inform.html'>등록화면</a>"; //서블릿의 기능을 보았다...
 
 		out.print(str);
 

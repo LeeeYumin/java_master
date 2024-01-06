@@ -17,12 +17,12 @@ public class GetStudentServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// url?sno=23-010&sname=홍길동
+		//url?sno=23-010&sname=홍길동 파라메터 넣어줘야함
 		resp.setContentType("text/html;charset=utf-8");
 
 		String sno = req.getParameter("sno");
 
-		StudentService dao = new StudentServiceImpl();
+		StudentService dao = new StudentServiceImpl(); //~DAO 에서 인터페이스 작업 후 ~Service로 변경
 		Student std = dao.getStudent(sno);
 
 		String str = "<table border='1'>";
@@ -32,7 +32,8 @@ public class GetStudentServlet extends HttpServlet {
 		str += "<tr><th>영어</th><td>" + std.getEnglishScore() + "</td></tr>";
 		str += "<tr><th>수학</th><td>" + std.getMathmaticScore() + "</td></tr>";
 		str += "</table>";
-		str += "<br><a href='modifyStudent?sno=" + std.getStudentNumber() + "'>수정화면</a>";
+		//상세화면
+		str += "<br><a href='modifyStudent?sno=" + std.getStudentNumber() + "'>수정화면</a>"; //공란도 값이라서 없게 할것
 		str += "<br><a href='studentList'>목록</a>";
 
 		// 사용자 페이지로 출력.

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dom01.html</title>
+    <title>dom.html</title>
 </head>
-
-<body class="bdy">
-    <!-- 표. -->
-    <!-- 
+<body>
+    <!--표 만들어 보기-->
     <table>
         <thead>
             <tr>
@@ -25,34 +22,88 @@
                 <td>010-1111</td>
             </tr>
         </tbody>
-    </table>
-    -->
+    </table> 
 
-    <!-- <ul>
+     <!-- <ul> 예시임
         <li>apple</li>
         <li>banana</li>
         <li>cherry</li>
-    </ul>  -->
+    </ul> -->
 
-    <script>
-        const fruits = ['apple', 'banana', 'cherry']; // new Array()
-        let bdy = document.querySelector('body');
+
+    <script> 
+
+    let bd = document.querySelector('body');
+    let table = document.createElement('table');
+    let thead = document.createElement('thead');
+    let tr = document.createElement('tr');
+
+    const th1 = ['아이디','이름','전화번호'];
+    for(let th of th1)  { 
+            let th1 = document.createElement('th'); 
+            th1.innerText =  th1; 
+            tr.appendChild(th1);
+        }
+
+
+     
+    const datas = ['user1', '홍길동', '010-1111'];
+    let tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+    let tr2 = document.createElement('tr');
+    tbody.appendChild(tr2);
+
+    for(let data of datas) {
+      let td1 = document.createElement('td');
+      td1.innerText = data;
+      tr2.appendChild(td1);
+    }
+    bdy.appendChild(table);
+
+    
+    // let th = document.createElement('th');
+    // th.innerText = '아이디';
+    // tr.appendChild(th);
+    // let th1 = document.createElement('th');
+    // th1.innerText = '이름';
+    // tr.appendChild(th1);
+    // let th2 = document.createElement('th');
+    // th2.innerText = '전화번호';
+    // tr.appendChild(th2);
+
+    // thead.appendChild(tr);
+    // table.appendChild(thead);
+    // bd.appendChild(table);
+
+    
+    
+        const fruits = ['apple','banana','cherry']; // Array방식도 있음. 알아만두기
+        let bdy = document.querySelector('body'); //querySelector:화면상에 있는거 찾아오는거. id=# class=.
         let ul = document.createElement('ul');
-        // 배열 for..of..
-        for (let fruit of fruits) {
-            let li1 = document.createElement('li');
-            li1.innerText = fruit;
+
+        //배열 for..of..
+        for(let li of fruits)  { //변수만큼 반복하겠다
+            let li1 = document.createElement('li'); 
+            li1.innerText =  fruits; 
             ul.appendChild(li1);
         }
 
         bdy.appendChild(ul);
 
-        console.log(window);
-        let btn = document.createElement('button'); // 
-        btn.innerText = 'Btn';
-        console.log(btn);
-        bdy.appendChild(btn);
-    </script>
-</body>
 
+        //window.alert('ㅎ');
+        console.log(window);
+        let btn = document.createElement('button'); //Document 는 object. 
+        btn.innerText = 'Btn'; //속성은 값을 넣을때 대입연산자 사용 
+        btn.addEventListener('click',function() { //객체에 붙는 함수들은 메소드. 함수는() 붙음. (이벤트 유형, 실행할 함수)
+            window.alert('Click 되었습니다');
+        })
+
+        console.log(btn);
+
+        document.querySelector('body').appendChild(btn); //Selector:선택자. 자식요소를 body태그 영역에 붙임
+
+    </script>
+    
+</body>
 </html>

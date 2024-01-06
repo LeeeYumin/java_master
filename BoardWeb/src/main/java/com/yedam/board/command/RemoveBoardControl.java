@@ -13,7 +13,7 @@ public class RemoveBoardControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// param("bno") - 삭제 - 목록.
+		// 파라메타("bno") - 삭제되면 목록으로 넘어가겠다
 		String bno = req.getParameter("bno");
 
 		BoardService svc = new BoardServiceMybatis();

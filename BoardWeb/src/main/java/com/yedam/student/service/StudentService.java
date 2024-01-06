@@ -10,5 +10,5 @@ public interface StudentService {
 	boolean addStudent(Student std);
 	boolean modStudent(String sno, int escore, int mscore);
 	boolean remStudent(String sno);
-	Student getStudent(String sno);
+	Student getStudent(String sno); //단건조회는 한건만 나오면 됨. 기본적인 CRUD는 끝
 }

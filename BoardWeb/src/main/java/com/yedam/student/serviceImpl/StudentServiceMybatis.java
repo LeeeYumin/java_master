@@ -24,7 +24,7 @@ public class StudentServiceMybatis implements StudentService {
 
 	@Override
 	public boolean addStudent(Student std) {
-		return mapper.addStudent(std) == 1;
+		return mapper.addStudent(std) == 1; //1건이 맞는지.
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class StudentServiceMybatis implements StudentService {
 
 	@Override
 	public boolean remStudent(String sno) {
-		return mapper.remStudent(sno) == 1;
+		return mapper.remStudent(sno) == 1; //1건 삭제 맞는지
 	}
 
 	@Override

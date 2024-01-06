@@ -5,7 +5,7 @@ import java.util.List;
 import com.yedam.board.vo.BoardVO;
 
 public interface BoardMapper {
-	//목록,단건조회,추가,수정,삭제,조회수증가.
+	//목록,단건조회,추가,수정,삭제,조회수증가. 이거 다 구현 되는지 테스트 해야됨... MainExe에!!!
 	List<BoardVO> selectList();
 	BoardVO selectOne(int bno);
 	int insertBoard(BoardVO vo);

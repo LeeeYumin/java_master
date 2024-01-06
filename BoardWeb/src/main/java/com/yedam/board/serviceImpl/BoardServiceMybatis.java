@@ -11,8 +11,8 @@ import com.yedam.common.DataSource;
 
 public class BoardServiceMybatis implements BoardService {
 
-	SqlSession session = DataSource.getInstance().openSession(true);
-	BoardMapper mapper = session.getMapper(BoardMapper.class);
+	SqlSession session = DataSource.getInstance().openSession(true); //Mybatis 규칙 따라씀
+	BoardMapper mapper = session.getMapper(BoardMapper.class); //인터페이스 mapper 가 갖고있는 = 인스턴스
 
 	@Override
 	public List<BoardVO> boardList() {
@@ -21,7 +21,7 @@ public class BoardServiceMybatis implements BoardService {
 
 	@Override
 	public BoardVO getBoard(int bno) {
-		mapper.updateCnt(bno);
+		mapper.updateCnt(bno);  //클릭수증가
 		return mapper.selectOne(bno);
 	}
 

@@ -6,7 +6,7 @@ import com.yedam.student.mapper.StudentDAO;
 import com.yedam.student.service.StudentService;
 import com.yedam.student.vo.Student;
 
-public class StudentServiceImpl implements StudentService {
+public class StudentServiceImpl implements StudentService { //마우스 대고 있으면 add~ 선택
 
 	StudentDAO dao = new StudentDAO();
 

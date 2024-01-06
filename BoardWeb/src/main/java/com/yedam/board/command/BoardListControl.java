@@ -27,10 +27,10 @@ public class BoardListControl implements Control {
 		RequestDispatcher rd //
 				= req.getRequestDispatcher("board/boardList.tiles");
 		try {
-			rd.forward(req, resp);
+			rd.forward(req, resp); //요청을 재지정함
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-}
+}// end

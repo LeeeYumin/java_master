@@ -12,7 +12,7 @@ import com.yedam.student.service.StudentService;
 import com.yedam.student.serviceImpl.StudentServiceImpl;
 import com.yedam.student.vo.Student;
 
-@WebServlet("/modifyStudent")
+@WebServlet("/modifyStudent") //url 의미함. 소문자로 바꿔줬다
 public class ModifyStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,9 +28,10 @@ public class ModifyStudent extends HttpServlet {
 		// 파라미터 활용해서 조회.
 		String sno = request.getParameter("sno");
 
-		StudentService dao = new StudentServiceImpl();
+		StudentService dao = new StudentServiceImpl(); //~DAO 에서 인터페이스 작업 후 ~Service로 변경
 		Student std = dao.getStudent(sno);
 
+		//html 태그
 		String str = "<form action='updateStudent'>";
 		str += "<table border='1'><caption>학생정보</caption>";
 		str += "<tr><th>학번</th><td><input type='text'"//

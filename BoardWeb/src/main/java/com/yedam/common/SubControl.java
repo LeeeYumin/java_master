@@ -11,7 +11,7 @@ public class SubControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		String bno = req.getParameter("bno");
+		String bno = req.getParameter("bno"); //"bno"는 파라메터 이름. url 에 ? 붙이고 하기. 
 
 		BoardService svc = new BoardServiceMybatis();
 		BoardVO vo = svc.getBoard(Integer.parseInt(bno));

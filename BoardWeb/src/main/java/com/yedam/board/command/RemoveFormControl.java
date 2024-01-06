@@ -24,7 +24,7 @@ public class RemoveFormControl implements Control {
 
 		req.setAttribute("vo", vo);
 
-		// 페이지 이동(forward)
+		// 페이지 이동(forward) 사용자가 입력시 "board/remBoardForm.jsp" 페이지 이동
 		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/remBoardForm.jsp");
 		try {
 			rd.forward(req, resp);

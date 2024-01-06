@@ -16,8 +16,8 @@ public class LoginControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// id, pw -> 정상 -> 목록.
-		// -> 비정상 -> 로그인화면.
+		// id, pw 를 불러들여서 정상이라면 글목록으로.
+		//                              비정상이면 로그인화면으로
 
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
@@ -27,11 +27,11 @@ public class LoginControl implements Control {
 		MemberVO vo = svc.login(id, pw);
 
 		if (vo != null) {
-			// 세션객체 로그인정보 저장.
-			HttpSession session = req.getSession();
+			// 로그인 성공. ->세션에 정보 담아야 됨. 세션객체에 로그인정보를 저장함.
+			HttpSession session = req.getSession(); //req.:요청정보
 			session.setAttribute("logId", vo.getId());// 세션객체에 로그인아이값을 저장.
 			session.setAttribute("logName", vo.getName());
-			// 권한 세션에 지정.
+			////권한 세션에 지정(관리자 user3 로그인)
 			session.setAttribute("responsibility", vo.getResponsibility());
 			try {
 				resp.sendRedirect("boardList.do");
