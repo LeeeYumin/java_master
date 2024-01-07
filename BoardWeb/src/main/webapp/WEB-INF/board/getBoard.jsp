@@ -93,11 +93,11 @@
   let ul = document.querySelector('#list');
 
   // Ajax호출.
-  const xhtp = new XMLHttpRequest();
-  xhtp.open('get', 'replyListJson.do?bno=' + bno)
+  const xhtp = new XMLHttpRequest(); //비동기방식 가져오는 객체
+  xhtp.open('get', 'replyListJson.do?bno=' + bno) // (요청방식,페이지) : 서버에 요청할 페이지 지정
   xhtp.send()
   xhtp.onload = function () {
-    let data = JSON.parse(xhtp.responseText); //json문자열 -> 객체.
+    let data = JSON.parse(xhtp.responseText); //json문자열 -> 객체. 서버에 전달
     data.forEach(reply => {
       let li = makeLi(reply);
       ul.appendChild(li);
@@ -107,8 +107,8 @@
   // 등록버튼 클릭 이벤트 생성.
   //document.querySelector('#addReply').addEventListener('click', function () { });
   document.querySelector('#addReply').onclick = function () {
-    let reply = document.querySelector('#content').value;
-    let replyer = '${logId}';
+    let reply = document.querySelector('#content').value; //사용자입력 input 값
+    let replyer = '${logId}'; //로그인하면 아이디 값 가져오기
 
     const addAjax = new XMLHttpRequest();
     addAjax.open('get', 'addReplyJson.do?reply=' + reply + '&replyer=' + replyer + '&bno=' + bno);

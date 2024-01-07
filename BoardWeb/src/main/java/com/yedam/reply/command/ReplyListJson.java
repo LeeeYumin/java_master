@@ -17,12 +17,12 @@ public class ReplyListJson implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// json 데이터를 생성해서 반환.
 		// [{"replyNo":4,"boardNo":2,"reply":"test1","replyer":"user1"},{}.....{}]
-		resp.setContentType("text/json;charset=utf-8");
+		resp.setContentType("text/json;charset=utf-8"); //한글 인코딩 되게 맨 위에 써줌
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
 
 		ReplyService svc = new ReplyServiceImpl();
-		List<ReplyVO> list = svc.replyListPaging(Integer.parseInt(bno), Integer.parseInt(page));
+		List<ReplyVO> list = svc.replyListPaging(Integer.parseInt(bno), Integer.parseInt(page)); //요청글번호 파라메터로 씀
 		int cnt = list.size();
 		String json = "[";
 		for (int i = 0; i < cnt; i++) {
@@ -34,7 +34,7 @@ public class ReplyListJson implements Control {
 			}
 		}
 
-		json += "]";
+		json += "]"; //String은 보여지는 형태..? 때문에 넣음
 
 		try {
 			resp.getWriter().print(json);

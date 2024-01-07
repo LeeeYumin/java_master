@@ -44,14 +44,14 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("init() 호출.");
 		// 게시판관련.
-		map.put("/boardList.do", new BoardListControl());
-		map.put("/boardForm.do", new BoardFormControl());
-		map.put("/addBoard.do", new AddBoardControl());
-		map.put("/getBoard.do", new GetBoardControl());
-		map.put("/modifyForm.do", new ModifyFormControl());
-		map.put("/modifyBoard.do", new ModifyBoardControl());
-		map.put("/removeForm.do", new RemoveFormControl());
-		map.put("/removeBoard.do", new RemoveBoardControl());
+		map.put("/boardList.do", new BoardListControl()); //목록조회
+		map.put("/boardForm.do", new BoardFormControl()); //등록화면
+		map.put("/addBoard.do", new AddBoardControl()); //등록기능
+		map.put("/getBoard.do", new GetBoardControl()); //단건조회(상세화면)
+		map.put("/modifyForm.do", new ModifyFormControl()); //수정화면
+		map.put("/modifyBoard.do", new ModifyBoardControl()); //수정기능
+		map.put("/removeForm.do", new RemoveFormControl()); //삭제화면
+		map.put("/removeBoard.do", new RemoveBoardControl()); //삭제기능
 
 		// 회원관련.
 		map.put("/loginForm.do", new LoginFormControl());
@@ -74,7 +74,7 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
+		req.setCharacterEncoding("utf-8"); // service() 실행될 때 요청내용 한글로 인코딩
 
 		System.out.println("service() 호출.");
 		// http://localhost/BoardWeb/main.do -> mainControl.

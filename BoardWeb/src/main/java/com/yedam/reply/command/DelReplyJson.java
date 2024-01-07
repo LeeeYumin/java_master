@@ -14,6 +14,8 @@ public class DelReplyJson implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
+		//기능 2가지임. 1.해당되는 댓글번호 DB에서 삭제하면 2. 화면에서도 제거 (DB삭제는 Ajax호출)
+		//1번 DB삭제 기능을 다 만들고 여기서 control => 2.화면제거(jsp파일-getBoard)
 		String rno = req.getParameter("rno");
 
 		ReplyService svc = new ReplyServiceImpl();

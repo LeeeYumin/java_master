@@ -17,15 +17,15 @@ public class BoardListControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// 게시글 목록 -> boardList.jsp 로 전달.
+		// 데이터 조회해서 게시글 목록을 boardList.jsp 로 전달하는 역할
 		BoardService svc = new BoardServiceMybatis();
-		List<BoardVO> list = svc.boardList();
+		List<BoardVO> list = svc.boardList(); //list는 참조값. boardList.jsp 에 값을 알려줘야 함
 
 		req.setAttribute("boardList", list);
 
 		// 페이지 이동(forward)
 		RequestDispatcher rd //
-				= req.getRequestDispatcher("board/boardList.tiles");
+				= req.getRequestDispatcher("board/boardList.tiles"); //요청하는데 boardList로 재지정 요청
 		try {
 			rd.forward(req, resp); //요청을 재지정함
 		} catch (ServletException | IOException e) {

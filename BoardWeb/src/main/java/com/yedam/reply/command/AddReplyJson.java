@@ -33,18 +33,18 @@ public class AddReplyJson implements Control {
 
 		ReplyService svc = new ReplyServiceImpl();
 
-		Gson gson = new GsonBuilder().create();
+		Gson gson = new GsonBuilder().create(); //gson lib 활용. 자바객체를 문자열로 쓸수있게..
 
 		Map<String, Object> map = new HashMap<>();
 
 		String json = null;
 		try {
 			if (svc.addReply(vo)) {
-				vo = svc.getReply(vo.getReplyNo());
+				vo = svc.getReply(vo.getReplyNo()); //단건조회-댓글등록시 이름뜨게
 
 				map.put("retCode", "OK");
-				map.put("vo", vo);
-				json = gson.toJson(map);
+				map.put("vo", vo); //실제값을 넘겨야함
+				json = gson.toJson(map); //map타입 객체를 Json 문자열로 바꿔줌
 
 				resp.getWriter().print(json);
 			} else {
