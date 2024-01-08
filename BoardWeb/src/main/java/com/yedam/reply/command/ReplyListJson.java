@@ -20,6 +20,7 @@ public class ReplyListJson implements Control {
 		resp.setContentType("text/json;charset=utf-8"); //한글 인코딩 되게 맨 위에 써줌
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
+		page = page == null ? "1" : page; //페이지 값이 없으면 1이라는 값을 넣어주자
 
 		ReplyService svc = new ReplyServiceImpl();
 		List<ReplyVO> list = svc.replyListPaging(Integer.parseInt(bno), Integer.parseInt(page)); //요청글번호 파라메터로 씀

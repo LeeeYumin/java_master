@@ -45,4 +45,16 @@
     on r.replyer = m.id 
     where reply_no = #{replyNo}  
   </select>
+  
+  <select id="selectCount" resultType="int" parameterType="int">
+  select count(*) from reply where board_no = #{boardNo}
+  </select>
+  
+  <select id="selectReplyCnt" resultType="map">
+  	select name "name", count(*) "cnt"
+	from reply r
+	join member m
+	on r.replyer = m. id
+	group by name
+  </select>
 </mapper>

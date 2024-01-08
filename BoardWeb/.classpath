@@ -43,7 +43,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/eclipse/lombok.jar"/>
-	<classpathentry kind="lib" path="D:/eclipse/ojdbc6_g.jar"/>
+	<classpathentry kind="lib" path="D:/lombok-1.18.30.jar"/>
+	<classpathentry kind="lib" path="D:/ojdbc6_g.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

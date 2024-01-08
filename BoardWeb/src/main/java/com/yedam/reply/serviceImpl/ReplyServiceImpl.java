@@ -1,5 +1,6 @@
 package com.yedam.reply.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,5 +39,14 @@ public class ReplyServiceImpl implements ReplyService {
 	public List<ReplyVO> replyListPaging(int boardNo, int page) {
 		return mapper.replyListPaging(boardNo, page);
 	}
-
+	
+	@Override
+	public int getTotalCnt(int boardNo) {
+		return mapper.selectCount(boardNo);
+	}
+	
+	public List<HashMap<String, Object>> chartData(){
+		return mapper.selectReplyCnt(); 
+	}
+	
 }
