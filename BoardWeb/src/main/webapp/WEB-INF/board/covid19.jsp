@@ -38,7 +38,7 @@ xhtp.onload = function(){
 		let tr = document.createElement('tr');
 		tr.addEventListener('click', function(){  //지도넣기
 			//location.href = 'map.do?x='+center.lat+'&y='+center.lng; //기존창에
-			window.open("map.do?x="+center.lat+"&y="+center.lng); //새탭으로 열어줌
+			window.open("map.do?x="+center.lat+"&y="+center.lng+ "&org=" + center.org); //새탭으로 열어줌
 		})
 		fields.forEach(field =>{ //center 넣으면 undefined 뜸
 			let td = document.createElement('td');

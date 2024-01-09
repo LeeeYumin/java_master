@@ -18,7 +18,7 @@
     		  chartData.push([item.name, item.cnt]);
     	  })
     		google.charts.setOnLoadCallback(drawChart);
-    	  
+    	  	//비동기방식.. 실행되는 시점을 알아야됨. 로딩될때 차트를 가져와서 이게 콜백function밖에 있으면 차트안보임	  
       }
 
       function drawChart() {

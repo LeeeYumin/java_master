@@ -128,10 +128,10 @@
   }
 
   // Ajax호출.
-  function showList(page){
+  function showList_backup(page){
 	  ul.innerHTML = '';
 	  const xhtp = new XMLHttpRequest(); //비동기방식 가져오는 객체
-	  xhtp.open('get', 'replyListJson.do?bno=' + bno + "&page=" + pageInfo) // (요청방식,페이지) : 서버에 요청할 페이지 지정
+	  xhtp.open('get', 'replyListJson.do?bno=' + bno + "&page=" + page) // (요청방식,페이지) : 서버에 요청할 페이지 지정
 	  xhtp.send()
 	  xhtp.onload = function () {
 	    let data = JSON.parse(xhtp.responseText); //json문자열 -> 객체.
@@ -139,8 +139,20 @@
 	      let li = makeLi(reply);
 	      ul.appendChild(li);
 	    })
+	  }//함수 만들어서 안에 넣어줌
+  } 
+	  function showList(page){
+		ul.innerHTML = '';
+		fetch("replyListJson.do?bno=" + bno + "&page=" + page)  
+		.then(str => str.json())
+		.then(result =>{
+			result.forEach(reply=>{
+				let li = makeLi(reply);
+				ul.appendChild(li);
+			})
+		})
+		.catch(reject => console.log(reject));
 	  }
-  } //함수 만들어서 안에 넣어줌
   showList(pageInfo); //이거 빠지면 1페이지에 바로 댓글 안나옴
   
   // 페이지 생성
@@ -193,29 +205,54 @@
   document.querySelector('#addReply').onclick = function () {
     let reply = document.querySelector('#content').value;
     let replyer = '${logId}';
+    
+    //fetch함수
+    fetch('addReplyJson.do',{
+    	method: 'post',
+    	headers: { //옵션이 여러개라 객체로 선언
+    		'Content-Type':'application/x-www-form-urlencoded'
+    	},
+    	body : 'reply=' + reply + '&replyer=' + replyer + '&bno=' + bno //addAjax.send값
+    })
+    .then(str => str.json())
+    .then(result => {
+    	 if (result.retCode == 'OK') {
+    	        alert('댓글 등록됨')
+    	        pageInfo = 1;
+    	        showList(pageInfo);
+    	        pagingList();
+    	        
+    	        document.querySelector('#content').value = '';
 
-    const addAjax = new XMLHttpRequest();
-    addAjax.open('get', 'addReplyJson.do?reply=' + reply + '&replyer=' + replyer + '&bno=' + bno);
-    addAjax.send();
+    	      } else if (result.retCode == 'NG') {
+    	        alert('처리중 에러')
+    	      }
+    })
+    .catch(err => console.error(err));
+
+/*     const addAjax = new XMLHttpRequest();
+    addAjax.open('post', 'addReplyJson.do');
+    addAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+    addAjax.send('reply=' + reply + '&replyer=' + replyer + '&bno=' + bno); //key+value순
     addAjax.onload = function () {
       let result = JSON.parse(addAjax.responseText);
       if (result.retCode == 'OK') {
        	//let reply = result.vo;
         //let li = makeLi(reply);
         //ul.appendChild(li); //
-        alert('댓글등록')
-        pageInfo =1;
+        alert('댓글 등록됨')
+        pageInfo = 1;
         showList(pageInfo);
         pagingList();
         
-
         document.querySelector('#content').value = '';
 
       } else if (result.retCode == 'NG') {
         alert('처리중 에러')
       }
-    }
-
+    } // end of onload.
+ */
+ 
   }
 </script>
 <jsp:include page="../layout/foot.jsp"></jsp:include>
