@@ -27,8 +27,8 @@
 <span>빅</span>
 </li>
 </ul>
-<ul id="newfriends">
-</ul>
+<ul id="newfriends"> </ul>
+
 <script>
 
 //새 <li> 엘리먼트 생성
@@ -54,7 +54,7 @@ appendli.append("왕눈이");
 document.querySelector('ul li ul').append(appendli);
 
 //마지막 차일드 엘리먼트 선택
-let selected = document.querySelector('.icons l ispan:last-child');
+let selected = document.querySelector('.icons li span:last-child');
 //추가할 span 노드 생성
 let newspan = document.createElement('span');
 let newspantext = document.createTextNode('빅');

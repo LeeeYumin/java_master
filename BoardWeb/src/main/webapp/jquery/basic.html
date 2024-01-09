@@ -2,9 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>basic.html</title>
-<script src = "../js/jquery-3.7.1.min.js"></script>
-<!--<script src = "basic.html"></script>-->
+<title>jquery/basic.html</title>
+<!--<script src = "../js/jquery-3.7.1.min.js"></script>-->
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 	//javascript 객체(속성, 메소드) vs. jqeury 객체(메소드 기반)
@@ -21,6 +20,16 @@
 		
 	
 	//java스크립트로 ul li...
+		let dom = document.querySelector('#dom');
+		let ulTag = document.createElement('ul');
+		let liTag1 = document.createElement('li');
+		liTag1.innerText = 'Apple';
+		let liTag2 = document.createElement('li');
+		liTag2.innerText = 'Banana';
+
+		ulTag.appendChild(liTag1);
+		ulTag.appendChild(liTag2);
+		dom.appendChild(ulTag);
 	
 	//onclick : $(객체).on('이벤트유형','실행함수')
 	$('#show li').on('mouseover', function(){
