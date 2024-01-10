@@ -1,4 +1,4 @@
-//funstion5.js
+//function5.js
 
 //Array.pototype.forEach();
 const ary = ['a','b','c']

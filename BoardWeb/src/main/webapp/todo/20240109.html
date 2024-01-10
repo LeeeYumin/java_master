@@ -27,16 +27,19 @@
 			
 			//하나선택삭제
 			$('#delSelected').on('click', function(){
-				$(':checked').parentsUntil('tbody').remove(); //.parent().parent().도 됨..
+				$('tbody input:checked').parentsUntil('tbody').remove();
+				//$('tbody input[type="checked"]:checked).parentsUntil('tbody').remove();
 			})
 			
-			//전체선택 이벤트 적용(해보기)
-<!--			$('thead input[type=checkbox]').on('click', function(){
-				$(':checkked').parent.
-			})-->
-			
-			
+			//전체선택/해제 이벤트 적용
+			$('thead input[type="checkbox"]').on('change', function(){
+				if(this.checked){
+					$('tbody input[type="checkbox"]').attr('checked', 'checked');
+				}
+				$('tbody input[type="checkbox"]').prop('checked', this.checked); //.attr('checked', 'checked'); 도 가능?
+			})			
         })
+        
     </script>
 </head>
 
