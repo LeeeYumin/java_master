@@ -48,10 +48,26 @@
         };
 
         btnOrders.forEach((node, idx) => { //function 빼면 화살표.
-            btnNode.addEventListener("click", function () {
+            node.addEventListener("click", function () {
                 console.log(window.event.target.dataset.goodno);
             })
         });
+
+        //for of
+            // for (let btnNode of btnOrders) {
+            //     btnNode.addEventListener('click', function () {
+            //         console.log(window.event.target.dataset.goodno);
+            //     })
+            // }
+
+        //for in -> 인덱스
+            // for (let i in btnOrders) {
+            //     btnOrders[i].addEventListener('click', function () {
+            //         console.log(window.event.target.dataset.goodno);
+            //     })
+            // }
+
+
         const newNode = `<div class="goods">
         <h1>상품2</h1>
         <img src="고양이2.jpg">
@@ -61,7 +77,7 @@
         </div>
     </div>`
 
-    //그룹이벤트(이벤트위임) 정리하기
+        //그룹이벤트(이벤트위임) 정리하기
 
     </script>
 

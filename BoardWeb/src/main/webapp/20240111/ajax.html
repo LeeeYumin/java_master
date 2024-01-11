@@ -24,9 +24,8 @@
             fetch(url2)
             .then(result => result.json())
             .then(result =>{
-                const movieDi = result.boxOfficeResult.movieInfo[11].movieDi
+                const movieDi = result.movieInfoResult.movieInfo.directors[0].peopleNm;
                 console.log(movieDi);
-
             });
     </script>
 </body>
