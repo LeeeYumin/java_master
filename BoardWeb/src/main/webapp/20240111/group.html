@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>자바스크립트</h3>
+    <input type="text" id="txt">
+    <button id="btn" type="button">추가</button>
+    <ul id="sel">
+        <li>바나나</li>
+        <li>사과</li>
+    </ul>
+    <!--jquery 그룹이벤트(이벤트위임) 부모한테 이벤트를 걸고 자식도 적용되게.-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+    <script>
+        document.querySelector("ul").addEventListener("click", function(){
+            if(event.target.nodeName == "LI"){
+                event.target.style.backgroundColor = 'yellow'
+            }
+        })
+
+        // $('ul').on("click","li", function(){ 
+        //     $(event.target).css('backgroundColor','yellowgreen');
+        // })
+
+        $("#btn").on("click",function(){
+            const txtValue = $('#txt').val();
+            $("#sel").append($("<li>").text(txtValue));
+        })
+    </script>
+
+</body>
+</html>

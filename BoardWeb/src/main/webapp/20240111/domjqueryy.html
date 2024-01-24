@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><domJquery class="html"></domJquery></title>
+    <script src=" https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--script는 중간에 쓰지 말기. 편의상 여기선 테이블 밑에 씀-->
+    <!--이건 주석참고만 하기. 자꾸 디버거뜬다...-->
+    <table border="1">
+        <tr>
+            <td>10</td>
+            <td>20</td>
+            <td>30</td>
+        </tr>
+    </table>
+    <script>
+        //$("td").eq(1).text() //20 출력. (0)하면 10임
+        $("td").each((i, item)=>{ //item은 dom객체. 자바스크립트임..
+            //console.log(item.innerHTML);
+            //console.log( $(item).html());
+            total += Number( $(item).html()) //parseInt($(item).html()) 도 가능 (null값 체크도 된다)
+        })
+        console.log("total=", total)
+
+        document.querySelectorAll("td").forEach((item,idx)=>{
+            console.log(item.innerText);
+            if(idx == 0)
+            return;
+        })
+
+        $("td").each( (idx, item) =>{
+            console.log(item.innerText);
+            if(idx == 0)
+            return false;
+        })
+    </script>
+
+    <!--jQuery는 $()!!!!-->
+    <input id="txtFruit">
+    <button id="btnAdd">추가</button>
+    <button id="btnDel">삭제</button>
+    <select id="selFruit" size="10">
+        <option>사과</option>
+    </select>
+    <script>
+                        //이벤트타입, 이벤트핸들러(리스너) 순
+        $("#btnAdd").on("click",()=>{
+            //let op = $("<option>") //<>없으면 검색. 있으면 생성
+            //op.text( $("#txtFruit").val() )
+            //$("#selFruit").append(op);
+            $("<option>").text( $("#txtFruit").val() )
+                         //.val("1")
+                         .appendTo($("#selFruit") );
+            $("#txtFruit").val("");
+        })
+        
+        $("#txtFruit").on("keypress", e=>{
+            if(event.keyCode == 13){
+                btnAdd.click();
+            } 
+        })
+
+        $("#btnDel").on("click", ()=>{ 
+            //$("#selFruit").html = "";
+            $("#selFruit").empty = "";
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domJquery.html (24-01-24)</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- https://cyannara.github.io/javascript/javascript_vs_jquery/#dom-api 유미교수님 참고 사이트. 여기있는거 정도는 다 외워야..-->
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td>10</td>
+            <td>20</td>
+            <td>30</td>
+        </tr>
+    </table>
+    <script>// 실제 코딩할때는 스크립트코드는 제일 위나 마지막에 모아서. 중간에 작성하지말기.
+        // $("td").text()
+        // $("td").eq(1).text()
+        let total0 = 0;
+        let total1 = 0;
+        let total = 0;
+        $("td").each((idx, item) => {
+            //console.log("item " + item.innerHTML);
+            //console.log($(item).text());
+            total0 += ($(item).text());
+            total1 += parseInt($(item).text());
+            total += Number(item.innerHTML); //parseInt랑 Number랑 차이 :             
+        })
+        console.log("total0=", total0)
+        console.log("total1=", total1)
+        console.log("total=", total)
+
+        document.querySelectorAll("td").forEach((item, idx) => {
+            console.log(item.innerText)
+            if (idx == 0)
+                return
+        })
+        $("td").each((idx, item)=>{
+            console.log(item.innerText);
+            if(idx == 0)
+            return false // return과 return false 차이. 
+        })
+    </script>
+
+
+    <!-- dom04.html 파일과 비교하면서 보기-->
+    <input id="txtFruit">
+    <button id="btnAdd">추가</button>
+    <button id="btnDel">삭제</button>
+    <select id="selFruit" size="10">
+        <option>사과
+    </select>
+    <script>
+        //event 타입, 핸들러(또는 리스너)
+        $("#btnAdd").on("click", () => {
+            // let op = $("<option>") // <> 요거가 태그라는 표시
+            // op.text($("#txtFruit").val())
+            // $("#selFruit").append(op);
+            $("<option>").text($("#txtFruit").val())
+                .appendTo($("#selFruit"));
+
+            $("txtFruit").val("")
+        })
+
+        $("#txtFruit").on("keypress", function () {
+            if (event.keyCode == 13) {
+                btnAdd.click();
+            }
+        })
+
+        $("#btnDel").on("click", () => {
+            $("#selFruit").empty();
+        })
+
+    </script>
+</body>
+</html>
+
+
+
